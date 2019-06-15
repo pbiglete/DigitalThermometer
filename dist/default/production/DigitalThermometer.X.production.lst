@@ -1,0 +1,3155 @@
+
+
+Microchip Technology PIC LITE Macro Assembler V1.45 build -152302408 
+                                                                                               Fri May 25 19:14:34 2018
+
+Microchip Technology Omniscient Code Generator v1.45 (Free mode) build 201711160504
+     1                           	processor	16F18324
+     2                           	opt	pw 120
+     3                           	opt	lm
+     4                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     5                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1
+     6                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1
+     7                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+     8                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1
+     9                           	psect	maintext,global,class=CODE,merge=1,split=1,delta=2
+    10                           	psect	text1,local,class=CODE,merge=1,delta=2
+    11                           	psect	text2,local,class=CODE,merge=1,delta=2
+    12                           	psect	text3,local,class=CODE,merge=1,delta=2
+    13                           	psect	text4,local,class=CODE,merge=1,delta=2
+    14                           	psect	swtext1,local,class=CONST,delta=2
+    15                           	psect	text5,local,class=CODE,merge=1,delta=2
+    16                           	psect	text6,local,class=CODE,merge=1,delta=2
+    17                           	psect	text7,local,class=CODE,merge=1,delta=2
+    18                           	psect	text8,local,class=CODE,merge=1,delta=2
+    19                           	psect	intentry,global,class=CODE,delta=2
+    20                           	dabs	1,0x7E,2
+    21  0000                     
+    22                           ; Version 1.45
+    23                           ; Generated 16/11/2017 GMT
+    24                           ; 
+    25                           ; Copyright © 2017, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    26                           ; All rights reserved.
+    27                           ; 
+    28                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    29                           ; 
+    30                           ; Redistribution and use in source and binary forms, with or without modification, are
+    31                           ; permitted provided that the following conditions are met:
+    32                           ; 
+    33                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    34                           ;        conditions and the following disclaimer.
+    35                           ; 
+    36                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    37                           ;        of conditions and the following disclaimer in the documentation and/or other
+    38                           ;        materials provided with the distribution.
+    39                           ; 
+    40                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    41                           ;        software without specific prior written permission.
+    42                           ; 
+    43                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    44                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    45                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    46                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    47                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    48                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    49                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    50                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    51                           ; 
+    52                           ; 
+    53                           ; Code-generator required, PIC16F18324 Definitions
+    54                           ; 
+    55                           ; SFR Addresses
+    56  0000                     	;# 
+    57  0001                     	;# 
+    58  0002                     	;# 
+    59  0003                     	;# 
+    60  0004                     	;# 
+    61  0005                     	;# 
+    62  0006                     	;# 
+    63  0007                     	;# 
+    64  0008                     	;# 
+    65  0009                     	;# 
+    66  000A                     	;# 
+    67  000B                     	;# 
+    68  000C                     	;# 
+    69  000E                     	;# 
+    70  0010                     	;# 
+    71  0011                     	;# 
+    72  0012                     	;# 
+    73  0013                     	;# 
+    74  0014                     	;# 
+    75  0015                     	;# 
+    76  0015                     	;# 
+    77  0016                     	;# 
+    78  0016                     	;# 
+    79  0017                     	;# 
+    80  0018                     	;# 
+    81  0019                     	;# 
+    82  0019                     	;# 
+    83  001A                     	;# 
+    84  001B                     	;# 
+    85  001C                     	;# 
+    86  001D                     	;# 
+    87  001E                     	;# 
+    88  001F                     	;# 
+    89  008C                     	;# 
+    90  008E                     	;# 
+    91  0090                     	;# 
+    92  0091                     	;# 
+    93  0092                     	;# 
+    94  0093                     	;# 
+    95  0094                     	;# 
+    96  0097                     	;# 
+    97  009B                     	;# 
+    98  009B                     	;# 
+    99  009C                     	;# 
+   100  009D                     	;# 
+   101  009E                     	;# 
+   102  009F                     	;# 
+   103  010C                     	;# 
+   104  010E                     	;# 
+   105  0111                     	;# 
+   106  0112                     	;# 
+   107  0113                     	;# 
+   108  0114                     	;# 
+   109  0115                     	;# 
+   110  0116                     	;# 
+   111  0117                     	;# 
+   112  0118                     	;# 
+   113  0119                     	;# 
+   114  018C                     	;# 
+   115  018E                     	;# 
+   116  0197                     	;# 
+   117  0199                     	;# 
+   118  0199                     	;# 
+   119  0199                     	;# 
+   120  019A                     	;# 
+   121  019A                     	;# 
+   122  019A                     	;# 
+   123  019B                     	;# 
+   124  019B                     	;# 
+   125  019B                     	;# 
+   126  019B                     	;# 
+   127  019B                     	;# 
+   128  019C                     	;# 
+   129  019C                     	;# 
+   130  019C                     	;# 
+   131  019D                     	;# 
+   132  019D                     	;# 
+   133  019D                     	;# 
+   134  019E                     	;# 
+   135  019E                     	;# 
+   136  019E                     	;# 
+   137  019F                     	;# 
+   138  019F                     	;# 
+   139  019F                     	;# 
+   140  019F                     	;# 
+   141  019F                     	;# 
+   142  020C                     	;# 
+   143  020E                     	;# 
+   144  0211                     	;# 
+   145  0211                     	;# 
+   146  0212                     	;# 
+   147  0212                     	;# 
+   148  0213                     	;# 
+   149  0213                     	;# 
+   150  0214                     	;# 
+   151  0214                     	;# 
+   152  0215                     	;# 
+   153  0215                     	;# 
+   154  0215                     	;# 
+   155  0215                     	;# 
+   156  0216                     	;# 
+   157  0216                     	;# 
+   158  0217                     	;# 
+   159  0217                     	;# 
+   160  028C                     	;# 
+   161  028E                     	;# 
+   162  0291                     	;# 
+   163  0291                     	;# 
+   164  0292                     	;# 
+   165  0293                     	;# 
+   166  0294                     	;# 
+   167  0295                     	;# 
+   168  0295                     	;# 
+   169  0296                     	;# 
+   170  0297                     	;# 
+   171  0298                     	;# 
+   172  029F                     	;# 
+   173  030C                     	;# 
+   174  030E                     	;# 
+   175  0311                     	;# 
+   176  0311                     	;# 
+   177  0312                     	;# 
+   178  0313                     	;# 
+   179  0314                     	;# 
+   180  0315                     	;# 
+   181  0315                     	;# 
+   182  0316                     	;# 
+   183  0317                     	;# 
+   184  0318                     	;# 
+   185  038C                     	;# 
+   186  038E                     	;# 
+   187  0391                     	;# 
+   188  0392                     	;# 
+   189  0393                     	;# 
+   190  0397                     	;# 
+   191  0398                     	;# 
+   192  0399                     	;# 
+   193  039A                     	;# 
+   194  039C                     	;# 
+   195  039D                     	;# 
+   196  039E                     	;# 
+   197  039F                     	;# 
+   198  0411                     	;# 
+   199  0411                     	;# 
+   200  0412                     	;# 
+   201  0413                     	;# 
+   202  0414                     	;# 
+   203  0415                     	;# 
+   204  0416                     	;# 
+   205  0417                     	;# 
+   206  0418                     	;# 
+   207  0418                     	;# 
+   208  0419                     	;# 
+   209  041A                     	;# 
+   210  041B                     	;# 
+   211  041C                     	;# 
+   212  041D                     	;# 
+   213  041E                     	;# 
+   214  041F                     	;# 
+   215  0498                     	;# 
+   216  0498                     	;# 
+   217  0499                     	;# 
+   218  049A                     	;# 
+   219  049B                     	;# 
+   220  049B                     	;# 
+   221  049C                     	;# 
+   222  049D                     	;# 
+   223  049E                     	;# 
+   224  049F                     	;# 
+   225  0617                     	;# 
+   226  0618                     	;# 
+   227  0619                     	;# 
+   228  0619                     	;# 
+   229  061A                     	;# 
+   230  061B                     	;# 
+   231  061C                     	;# 
+   232  061C                     	;# 
+   233  061F                     	;# 
+   234  0691                     	;# 
+   235  0692                     	;# 
+   236  0693                     	;# 
+   237  0694                     	;# 
+   238  0695                     	;# 
+   239  0696                     	;# 
+   240  0697                     	;# 
+   241  0698                     	;# 
+   242  0699                     	;# 
+   243  0711                     	;# 
+   244  0712                     	;# 
+   245  0713                     	;# 
+   246  0714                     	;# 
+   247  0715                     	;# 
+   248  0716                     	;# 
+   249  0717                     	;# 
+   250  0718                     	;# 
+   251  0719                     	;# 
+   252  0891                     	;# 
+   253  0891                     	;# 
+   254  0891                     	;# 
+   255  0891                     	;# 
+   256  0891                     	;# 
+   257  0891                     	;# 
+   258  0892                     	;# 
+   259  0892                     	;# 
+   260  0892                     	;# 
+   261  0893                     	;# 
+   262  0893                     	;# 
+   263  0893                     	;# 
+   264  0893                     	;# 
+   265  0893                     	;# 
+   266  0893                     	;# 
+   267  0894                     	;# 
+   268  0894                     	;# 
+   269  0894                     	;# 
+   270  0895                     	;# 
+   271  0895                     	;# 
+   272  0895                     	;# 
+   273  0896                     	;# 
+   274  0896                     	;# 
+   275  0896                     	;# 
+   276  089B                     	;# 
+   277  0911                     	;# 
+   278  0912                     	;# 
+   279  0913                     	;# 
+   280  0914                     	;# 
+   281  0915                     	;# 
+   282  0916                     	;# 
+   283  0918                     	;# 
+   284  0919                     	;# 
+   285  091A                     	;# 
+   286  091B                     	;# 
+   287  091C                     	;# 
+   288  091D                     	;# 
+   289  091E                     	;# 
+   290  091F                     	;# 
+   291  0E0F                     	;# 
+   292  0E10                     	;# 
+   293  0E11                     	;# 
+   294  0E12                     	;# 
+   295  0E13                     	;# 
+   296  0E14                     	;# 
+   297  0E15                     	;# 
+   298  0E16                     	;# 
+   299  0E17                     	;# 
+   300  0E18                     	;# 
+   301  0E19                     	;# 
+   302  0E1A                     	;# 
+   303  0E1B                     	;# 
+   304  0E1C                     	;# 
+   305  0E20                     	;# 
+   306  0E21                     	;# 
+   307  0E22                     	;# 
+   308  0E24                     	;# 
+   309  0E25                     	;# 
+   310  0E28                     	;# 
+   311  0E29                     	;# 
+   312  0E2A                     	;# 
+   313  0E2B                     	;# 
+   314  0E2C                     	;# 
+   315  0E2D                     	;# 
+   316  0E2E                     	;# 
+   317  0E2F                     	;# 
+   318  0E90                     	;# 
+   319  0E91                     	;# 
+   320  0E92                     	;# 
+   321  0E94                     	;# 
+   322  0E95                     	;# 
+   323  0EA0                     	;# 
+   324  0EA1                     	;# 
+   325  0EA2                     	;# 
+   326  0EA3                     	;# 
+   327  0EA4                     	;# 
+   328  0EA5                     	;# 
+   329  0F0F                     	;# 
+   330  0F10                     	;# 
+   331  0F11                     	;# 
+   332  0F12                     	;# 
+   333  0F13                     	;# 
+   334  0F14                     	;# 
+   335  0F15                     	;# 
+   336  0F16                     	;# 
+   337  0F17                     	;# 
+   338  0F18                     	;# 
+   339  0F19                     	;# 
+   340  0F1A                     	;# 
+   341  0F1B                     	;# 
+   342  0F1C                     	;# 
+   343  0F1D                     	;# 
+   344  0F1E                     	;# 
+   345  0F1F                     	;# 
+   346  0F20                     	;# 
+   347  0F21                     	;# 
+   348  0F22                     	;# 
+   349  0F23                     	;# 
+   350  0F24                     	;# 
+   351  0F25                     	;# 
+   352  0F26                     	;# 
+   353  0F27                     	;# 
+   354  0F28                     	;# 
+   355  0F29                     	;# 
+   356  0F2A                     	;# 
+   357  0F2B                     	;# 
+   358  0F2C                     	;# 
+   359  0F2D                     	;# 
+   360  0F2E                     	;# 
+   361  0F2F                     	;# 
+   362  0F30                     	;# 
+   363  0F31                     	;# 
+   364  0F32                     	;# 
+   365  0F33                     	;# 
+   366  0F34                     	;# 
+   367  0F35                     	;# 
+   368  0F36                     	;# 
+   369  0F37                     	;# 
+   370  0FE4                     	;# 
+   371  0FE5                     	;# 
+   372  0FE6                     	;# 
+   373  0FE7                     	;# 
+   374  0FE8                     	;# 
+   375  0FE9                     	;# 
+   376  0FEA                     	;# 
+   377  0FEB                     	;# 
+   378  0FED                     	;# 
+   379  0FEE                     	;# 
+   380  0FEF                     	;# 
+   381  0016                     _TMR0Hbits	set	22
+   382  000B                     _INTCONbits	set	11
+   383  0018                     _T0CON1	set	24
+   384  0017                     _T0CON0	set	23
+   385  000E                     _PORTCbits	set	14
+   386  0085                     _TMR0IF	set	133
+   387  009C                     _ADRESH	set	156
+   388  009D                     _ADCON0bits	set	157
+   389  0090                     _PIE0	set	144
+   390  009E                     _ADCON1	set	158
+   391  009D                     _ADCON0	set	157
+   392  008E                     _TRISCbits	set	142
+   393  008E                     _TRISC	set	142
+   394  0485                     _TMR0IE	set	1157
+   395  0117                     _FVRCON	set	279
+   396  018E                     _ANSELCbits	set	398
+   397  0214                     _SSP1STATbits	set	532
+   398  0211                     _SSP1BUF	set	529
+   399  0215                     _SSP1CONbits	set	533
+   400  0215                     _SSP1CON1	set	533
+   401  091F                     _OSCFRQ	set	2335
+   402  0919                     _OSCCON1	set	2329
+   403  0E0F                     _PPSLOCK	set	3599
+   404  0EA4                     _RC4PPS	set	3748
+   405  0EA5                     _RC5PPS	set	3749
+   406                           
+   407                           ; #config settings
+   408  0000                     
+   409                           	psect	cinit
+   410  001F                     start_initialization:	
+   411  001F                     __initialization:	
+   412                           
+   413                           ; Clear objects allocated to COMMON
+   414  001F  01FA               	clrf	__pbssCOMMON& (0+127)
+   415                           
+   416                           ; Clear objects allocated to BANK0
+   417  0020  0020               	movlb	0	; select bank0
+   418  0021  01A0               	clrf	__pbssBANK0& (0+127)
+   419  0022  01A1               	clrf	(__pbssBANK0+1)& (0+127)
+   420  0023  01A2               	clrf	(__pbssBANK0+2)& (0+127)
+   421  0024  01A3               	clrf	(__pbssBANK0+3)& (0+127)
+   422  0025  01A4               	clrf	(__pbssBANK0+4)& (0+127)
+   423  0026  01A5               	clrf	(__pbssBANK0+5)& (0+127)
+   424  0027                     end_of_initialization:	
+   425                           ;End of C runtime variable initialization code
+   426                           
+   427  0027                     __end_of__initialization:	
+   428  0027  107E               	bcf	int$flags,0	;clear compiler interrupt flag (level 1)
+   429  0028  0020               	movlb	0
+   430  0029  3184  2C64         	ljmp	_main	;jump to C main() function
+   431                           
+   432                           	psect	bssCOMMON
+   433  007A                     __pbssCOMMON:	
+   434  007A                     _ADC_H:	
+   435  007A                     	ds	1
+   436                           
+   437                           	psect	bssBANK0
+   438  0020                     __pbssBANK0:	
+   439  0020                     _Cold_Flag:	
+   440  0020                     	ds	2
+   441  0022                     _Hot_Flag:	
+   442  0022                     	ds	2
+   443  0024                     _count:	
+   444  0024                     	ds	2
+   445                           
+   446                           	psect	cstackCOMMON
+   447  0070                     __pcstackCOMMON:	
+   448  0070                     ?_ADC_Init:	
+   449  0070                     ?_Timer0_Init:	
+   450                           ; 1 bytes @ 0x0
+   451                           
+   452  0070                     ?_MAX7219_Init:	
+   453                           ; 1 bytes @ 0x0
+   454                           
+   455  0070                     ?_TestDisplay:	
+   456                           ; 1 bytes @ 0x0
+   457                           
+   458  0070                     ?_UpdateDisplay:	
+   459                           ; 1 bytes @ 0x0
+   460                           
+   461  0070                     ?_SPI_SHIFT_8:	
+   462                           ; 1 bytes @ 0x0
+   463                           
+   464  0070                     ?_main:	
+   465                           ; 1 bytes @ 0x0
+   466                           
+   467  0070                     ?_my_isr:	
+   468                           ; 1 bytes @ 0x0
+   469                           
+   470  0070                     ??_my_isr:	
+   471                           ; 1 bytes @ 0x0
+   472                           
+   473  0070                     ?_WarningFlash:	
+   474                           ; 1 bytes @ 0x0
+   475                           
+   476                           
+   477                           ; 1 bytes @ 0x0
+   478  0070                     	ds	2
+   479  0072                     ??_ADC_Init:	
+   480  0072                     ??_Timer0_Init:	
+   481                           ; 1 bytes @ 0x2
+   482                           
+   483  0072                     ??_SPI_SHIFT_8:	
+   484                           ; 1 bytes @ 0x2
+   485                           
+   486  0072                     SPI_SHIFT_8@data:	
+   487                           ; 1 bytes @ 0x2
+   488                           
+   489                           
+   490                           ; 1 bytes @ 0x2
+   491  0072                     	ds	1
+   492  0073                     ?_MAX7219_Transfer:	
+   493  0073                     MAX7219_Transfer@value:	
+   494                           ; 1 bytes @ 0x3
+   495                           
+   496                           
+   497                           ; 1 bytes @ 0x3
+   498  0073                     	ds	1
+   499  0074                     ??_MAX7219_Transfer:	
+   500                           
+   501                           ; 1 bytes @ 0x4
+   502  0074                     	ds	1
+   503  0075                     MAX7219_Transfer@address:	
+   504                           
+   505                           ; 1 bytes @ 0x5
+   506  0075                     	ds	1
+   507  0076                     ??_MAX7219_Init:	
+   508  0076                     ??_TestDisplay:	
+   509                           ; 1 bytes @ 0x6
+   510                           
+   511  0076                     ??_WarningFlash:	
+   512                           ; 1 bytes @ 0x6
+   513                           
+   514                           
+   515                           ; 1 bytes @ 0x6
+   516  0076                     	ds	2
+   517  0078                     ??_UpdateDisplay:	
+   518                           
+   519                           ; 1 bytes @ 0x8
+   520  0078                     	ds	1
+   521  0079                     ??_main:	
+   522                           
+   523                           ; 1 bytes @ 0x9
+   524  0079                     	ds	1
+   525                           
+   526                           	psect	cstackBANK0
+   527  0026                     __pcstackBANK0:	
+   528  0026                     WarningFlash@i:	
+   529  0026                     TestDisplay@j:	
+   530                           ; 2 bytes @ 0x0
+   531                           
+   532                           
+   533                           ; 2 bytes @ 0x0
+   534  0026                     	ds	2
+   535  0028                     WarningFlash@i_325:	
+   536  0028                     TestDisplay@i:	
+   537                           ; 2 bytes @ 0x2
+   538                           
+   539                           
+   540                           ; 2 bytes @ 0x2
+   541  0028                     	ds	2
+   542                           
+   543                           	psect	maintext
+   544  0464                     __pmaintext:	
+   545 ;;
+   546 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+   547 ;;
+   548 ;; *************** function _main *****************
+   549 ;; Defined at:
+   550 ;;		line 71 in file "main.c"
+   551 ;; Parameters:    Size  Location     Type
+   552 ;;		None
+   553 ;; Auto vars:     Size  Location     Type
+   554 ;;		None
+   555 ;; Return value:  Size  Location     Type
+   556 ;;                  1    wreg      void 
+   557 ;; Registers used:
+   558 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   559 ;; Tracked objects:
+   560 ;;		On entry : B1F/0
+   561 ;;		On exit  : 0/0
+   562 ;;		Unchanged: 0/0
+   563 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
+   564 ;;      Params:         0       0       0       0       0       0       0       0
+   565 ;;      Locals:         0       0       0       0       0       0       0       0
+   566 ;;      Temps:          1       0       0       0       0       0       0       0
+   567 ;;      Totals:         1       0       0       0       0       0       0       0
+   568 ;;Total ram usage:        1 bytes
+   569 ;; Hardware stack levels required when called:    5
+   570 ;; This function calls:
+   571 ;;		_ADC_Init
+   572 ;;		_MAX7219_Init
+   573 ;;		_MAX7219_Transfer
+   574 ;;		_TestDisplay
+   575 ;;		_Timer0_Init
+   576 ;;		_UpdateDisplay
+   577 ;; This function is called by:
+   578 ;;		Startup code after reset
+   579 ;; This function uses a non-reentrant model
+   580 ;;
+   581                           
+   582                           
+   583                           ;psect for function _main
+   584  0464                     _main:	
+   585                           
+   586                           ;main.c: 73: OSCCON1 = 0x60;
+   587                           
+   588                           ;incstack = 0
+   589                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   590  0464  3060               	movlw	96
+   591  0465  0032               	movlb	18	; select bank18
+   592  0466  0099               	movwf	25	;volatile
+   593                           
+   594                           ;main.c: 74: OSCFRQ = 0x03;
+   595  0467  3003               	movlw	3
+   596  0468  009F               	movwf	31	;volatile
+   597                           
+   598                           ;main.c: 76: ADC_Init();
+   599  0469  3185  2507  3184   	fcall	_ADC_Init
+   600                           
+   601                           ;main.c: 77: Timer0_Init();
+   602  046C  3184  24FA  3184   	fcall	_Timer0_Init
+   603                           
+   604                           ;main.c: 79: TRISC = 0b1111111;
+   605  046F  307F               	movlw	127
+   606  0470  0021               	movlb	1	; select bank1
+   607  0471  008E               	movwf	14	;volatile
+   608                           
+   609                           ;main.c: 80: TRISCbits.TRISC5 = 0;
+   610  0472  128E               	bcf	14,5	;volatile
+   611                           
+   612                           ;main.c: 81: TRISCbits.TRISC4 = 0;
+   613  0473  120E               	bcf	14,4	;volatile
+   614                           
+   615                           ;main.c: 82: TRISCbits.TRISC3 = 0;
+   616  0474  118E               	bcf	14,3	;volatile
+   617                           
+   618                           ;main.c: 83: TRISCbits.TRISC2 = 1;
+   619  0475  150E               	bsf	14,2	;volatile
+   620                           
+   621                           ;main.c: 92: SSP1CON1 = 0b00110000;
+   622  0476  3030               	movlw	48
+   623  0477  0024               	movlb	4	; select bank4
+   624  0478  0095               	movwf	21	;volatile
+   625                           
+   626                           ;main.c: 93: RC5PPS = 0b11001;
+   627  0479  3019               	movlw	25
+   628  047A  003D               	movlb	29	; select bank29
+   629  047B  00A5               	movwf	37	;volatile
+   630                           
+   631                           ;main.c: 94: RC4PPS = 0b11000;
+   632  047C  3018               	movlw	24
+   633  047D  00A4               	movwf	36	;volatile
+   634                           
+   635                           ;main.c: 95: PPSLOCK = 1;
+   636  047E  3001               	movlw	1
+   637  047F  003C               	movlb	28	; select bank28
+   638  0480  008F               	movwf	15	;volsfr
+   639                           
+   640                           ;main.c: 97: MAX7219_Init();
+   641  0481  3184  249D  3184   	fcall	_MAX7219_Init
+   642                           
+   643                           ;main.c: 98: TestDisplay();
+   644  0484  3182  228B  3184   	fcall	_TestDisplay
+   645                           
+   646                           ;main.c: 101: MAX7219_Transfer(0x0A, 0x02);
+   647  0487  3002               	movlw	2
+   648  0488  00F9               	movwf	??_main
+   649  0489  0879               	movf	??_main,w
+   650  048A  00F3               	movwf	MAX7219_Transfer@value
+   651  048B  300A               	movlw	10
+   652  048C  3184  24D0  3184   	fcall	_MAX7219_Transfer
+   653                           
+   654                           ;main.c: 103: TMR0IF = 0;
+   655  048F  0020               	movlb	0	; select bank0
+   656  0490  1290               	bcf	16,5	;volatile
+   657  0491                     l2897:	
+   658                           ;main.c: 105: while (1)
+   659                           
+   660                           
+   661                           ;main.c: 106: {
+   662                           ;main.c: 107: _delay((unsigned long)((150)*(4000000/4000.0)));
+   663  0491  30C3               	movlw	195
+   664  0492  00F9               	movwf	??_main
+   665  0493  30CD               	movlw	205
+   666  0494                     u4067:	
+   667  0494  0B89               	decfsz	9,f
+   668  0495  2C94               	goto	u4067
+   669  0496  0BF9               	decfsz	??_main,f
+   670  0497  2C94               	goto	u4067
+   671  0498  0000               	nop
+   672                           
+   673                           ;main.c: 108: UpdateDisplay();
+   674  0499  3180  202B  3184   	fcall	_UpdateDisplay
+   675  049C  2C91               	goto	l2897
+   676  049D                     __end_of_main:	
+   677                           
+   678                           	psect	text1
+   679  002B                     __ptext1:	
+   680 ;; *************** function _UpdateDisplay *****************
+   681 ;; Defined at:
+   682 ;;		line 197 in file "main.c"
+   683 ;; Parameters:    Size  Location     Type
+   684 ;;		None
+   685 ;; Auto vars:     Size  Location     Type
+   686 ;;		None
+   687 ;; Return value:  Size  Location     Type
+   688 ;;                  1    wreg      void 
+   689 ;; Registers used:
+   690 ;;		wreg, status,2, status,0, pclath, cstack
+   691 ;; Tracked objects:
+   692 ;;		On entry : 0/0
+   693 ;;		On exit  : 0/0
+   694 ;;		Unchanged: 0/0
+   695 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
+   696 ;;      Params:         0       0       0       0       0       0       0       0
+   697 ;;      Locals:         0       0       0       0       0       0       0       0
+   698 ;;      Temps:          1       0       0       0       0       0       0       0
+   699 ;;      Totals:         1       0       0       0       0       0       0       0
+   700 ;;Total ram usage:        1 bytes
+   701 ;; Hardware stack levels used:    1
+   702 ;; Hardware stack levels required when called:    4
+   703 ;; This function calls:
+   704 ;;		_MAX7219_Transfer
+   705 ;;		_WarningFlash
+   706 ;; This function is called by:
+   707 ;;		_main
+   708 ;; This function uses a non-reentrant model
+   709 ;;
+   710                           
+   711                           
+   712                           ;psect for function _UpdateDisplay
+   713  002B                     _UpdateDisplay:	
+   714                           
+   715                           ;main.c: 199: if(ADC_H >= 19 && ADC_H <= 28)
+   716                           
+   717                           ;incstack = 0
+   718                           ; Regs used in _UpdateDisplay: [wreg+status,2+status,0+pclath+cstack]
+   719  002B  3013               	movlw	19
+   720  002C  027A               	subwf	_ADC_H,w
+   721  002D  1C03               	skipc
+   722  002E  285A               	goto	l2421
+   723  002F  301D               	movlw	29
+   724  0030  027A               	subwf	_ADC_H,w
+   725  0031  1803               	skipnc
+   726  0032  285A               	goto	l2421
+   727                           
+   728                           ;main.c: 200: {
+   729                           ;main.c: 201: MAX7219_Transfer(0x01, 0);
+   730  0033  01F3               	clrf	MAX7219_Transfer@value
+   731  0034  3001               	movlw	1
+   732  0035  3184  24D0  3180   	fcall	_MAX7219_Transfer
+   733                           
+   734                           ;main.c: 204: if(ADC_H == 20) MAX7219_Transfer(0x02, 1);
+   735  0038  3014               	movlw	20
+   736  0039  067A               	xorwf	_ADC_H,w
+   737  003A  1903               	btfsc	3,2
+   738  003B  2A2E               	goto	L12
+   739                           
+   740                           ;main.c: 205: else if (ADC_H == 21) MAX7219_Transfer(0x02, 2);
+   741  003C  3015               	movlw	21
+   742  003D  067A               	xorwf	_ADC_H,w
+   743  003E  1903               	btfsc	3,2
+   744  003F  2A35               	goto	L85
+   745                           
+   746                           ;main.c: 206: else if (ADC_H == 22) MAX7219_Transfer(0x02, 3);
+   747  0040  3016               	movlw	22
+   748  0041  067A               	xorwf	_ADC_H,w
+   749  0042  1903               	btfsc	3,2
+   750  0043  2A3B               	goto	L86
+   751                           
+   752                           ;main.c: 207: else if (ADC_H == 23) MAX7219_Transfer(0x02, 4);
+   753  0044  3017               	movlw	23
+   754  0045  067A               	xorwf	_ADC_H,w
+   755  0046  1903               	btfsc	3,2
+   756  0047  2A41               	goto	L87
+   757                           
+   758                           ;main.c: 208: else if (ADC_H == 24) MAX7219_Transfer(0x02, 5);
+   759  0048  3018               	movlw	24
+   760  0049  067A               	xorwf	_ADC_H,w
+   761  004A  1903               	btfsc	3,2
+   762  004B  2A47               	goto	L88
+   763                           
+   764                           ;main.c: 209: else if (ADC_H == 25) MAX7219_Transfer(0x02, 6);
+   765  004C  3019               	movlw	25
+   766  004D  067A               	xorwf	_ADC_H,w
+   767  004E  1903               	btfsc	3,2
+   768  004F  2A4D               	goto	L89
+   769                           
+   770                           ;main.c: 210: else if (ADC_H == 26) MAX7219_Transfer(0x02, 7);
+   771  0050  301A               	movlw	26
+   772  0051  067A               	xorwf	_ADC_H,w
+   773  0052  1903               	btfsc	3,2
+   774  0053  2A53               	goto	L90
+   775                           
+   776                           ;main.c: 211: else if (ADC_H == 27) MAX7219_Transfer(0x02, 8);
+   777  0054  301B               	movlw	27
+   778  0055  067A               	xorwf	_ADC_H,w
+   779  0056  1903               	btfsc	3,2
+   780  0057  2A59               	goto	L91
+   781                           
+   782                           ;main.c: 212: else if (ADC_H == 28) MAX7219_Transfer(0x02, 9);
+   783  0058  301C               	movlw	28
+   784  0059  2A5C               	goto	L92
+   785  005A                     l2421:	
+   786                           ;main.c: 214: }
+   787                           
+   788                           ;main.c: 213: else MAX7219_Transfer(0x02, 0);
+   789                           
+   790                           
+   791                           ;main.c: 215: else if(ADC_H >= 29 && ADC_H <= 38)
+   792  005A  301D               	movlw	29
+   793  005B  027A               	subwf	_ADC_H,w
+   794  005C  1C03               	skipc
+   795  005D  288A               	goto	l2465
+   796  005E  3027               	movlw	39
+   797  005F  027A               	subwf	_ADC_H,w
+   798  0060  1803               	skipnc
+   799  0061  288A               	goto	l2465
+   800                           
+   801                           ;main.c: 216: {
+   802                           ;main.c: 217: MAX7219_Transfer(0x01, 1);
+   803  0062  01F3               	clrf	MAX7219_Transfer@value
+   804  0063  0AF3               	incf	MAX7219_Transfer@value,f
+   805  0064  3001               	movlw	1
+   806  0065  3184  24D0  3180   	fcall	_MAX7219_Transfer
+   807                           
+   808                           ;main.c: 220: if(ADC_H == 30) MAX7219_Transfer(0x02, 1);
+   809  0068  301E               	movlw	30
+   810  0069  067A               	xorwf	_ADC_H,w
+   811  006A  1903               	btfsc	3,2
+   812  006B  2A2E               	goto	L12
+   813                           
+   814                           ;main.c: 221: else if (ADC_H == 31) MAX7219_Transfer(0x02, 2);
+   815  006C  301F               	movlw	31
+   816  006D  067A               	xorwf	_ADC_H,w
+   817  006E  1903               	btfsc	3,2
+   818  006F  2A35               	goto	L85
+   819                           
+   820                           ;main.c: 222: else if (ADC_H == 32) MAX7219_Transfer(0x02, 3);
+   821  0070  3020               	movlw	32
+   822  0071  067A               	xorwf	_ADC_H,w
+   823  0072  1903               	btfsc	3,2
+   824  0073  2A3B               	goto	L86
+   825                           
+   826                           ;main.c: 223: else if (ADC_H == 33) MAX7219_Transfer(0x02, 4);
+   827  0074  3021               	movlw	33
+   828  0075  067A               	xorwf	_ADC_H,w
+   829  0076  1903               	btfsc	3,2
+   830  0077  2A41               	goto	L87
+   831                           
+   832                           ;main.c: 224: else if (ADC_H == 34) MAX7219_Transfer(0x02, 5);
+   833  0078  3022               	movlw	34
+   834  0079  067A               	xorwf	_ADC_H,w
+   835  007A  1903               	btfsc	3,2
+   836  007B  2A47               	goto	L88
+   837                           
+   838                           ;main.c: 225: else if (ADC_H == 35) MAX7219_Transfer(0x02, 6);
+   839  007C  3023               	movlw	35
+   840  007D  067A               	xorwf	_ADC_H,w
+   841  007E  1903               	btfsc	3,2
+   842  007F  2A4D               	goto	L89
+   843                           
+   844                           ;main.c: 226: else if (ADC_H == 36) MAX7219_Transfer(0x02, 7);
+   845  0080  3024               	movlw	36
+   846  0081  067A               	xorwf	_ADC_H,w
+   847  0082  1903               	btfsc	3,2
+   848  0083  2A53               	goto	L90
+   849                           
+   850                           ;main.c: 227: else if (ADC_H == 37) MAX7219_Transfer(0x02, 8);
+   851  0084  3025               	movlw	37
+   852  0085  067A               	xorwf	_ADC_H,w
+   853  0086  1903               	btfsc	3,2
+   854  0087  2A59               	goto	L91
+   855                           
+   856                           ;main.c: 228: else if (ADC_H == 38) MAX7219_Transfer(0x02, 9);
+   857  0088  3026               	movlw	38
+   858  0089  2A5C               	goto	L92
+   859  008A                     l2465:	
+   860                           ;main.c: 230: }
+   861                           
+   862                           ;main.c: 229: else MAX7219_Transfer(0x02, 0);
+   863                           
+   864                           
+   865                           ;main.c: 231: else if(ADC_H >= 39 && ADC_H <= 48)
+   866  008A  3027               	movlw	39
+   867  008B  027A               	subwf	_ADC_H,w
+   868  008C  1C03               	skipc
+   869  008D  28BC               	goto	l2509
+   870  008E  3031               	movlw	49
+   871  008F  027A               	subwf	_ADC_H,w
+   872  0090  1803               	skipnc
+   873  0091  28BC               	goto	l2509
+   874                           
+   875                           ;main.c: 232: {
+   876                           ;main.c: 233: MAX7219_Transfer(0x01, 2);
+   877  0092  3002               	movlw	2
+   878  0093  00F8               	movwf	??_UpdateDisplay
+   879  0094  0878               	movf	??_UpdateDisplay,w
+   880  0095  00F3               	movwf	MAX7219_Transfer@value
+   881  0096  3001               	movlw	1
+   882  0097  3184  24D0  3180   	fcall	_MAX7219_Transfer
+   883                           
+   884                           ;main.c: 236: if(ADC_H == 40) MAX7219_Transfer(0x02, 1);
+   885  009A  3028               	movlw	40
+   886  009B  067A               	xorwf	_ADC_H,w
+   887  009C  1903               	btfsc	3,2
+   888  009D  2A2E               	goto	L12
+   889                           
+   890                           ;main.c: 237: else if (ADC_H == 41) MAX7219_Transfer(0x02, 2);
+   891  009E  3029               	movlw	41
+   892  009F  067A               	xorwf	_ADC_H,w
+   893  00A0  1903               	btfsc	3,2
+   894  00A1  2A35               	goto	L85
+   895                           
+   896                           ;main.c: 238: else if (ADC_H == 42) MAX7219_Transfer(0x02, 3);
+   897  00A2  302A               	movlw	42
+   898  00A3  067A               	xorwf	_ADC_H,w
+   899  00A4  1903               	btfsc	3,2
+   900  00A5  2A3B               	goto	L86
+   901                           
+   902                           ;main.c: 239: else if (ADC_H == 43) MAX7219_Transfer(0x02, 4);
+   903  00A6  302B               	movlw	43
+   904  00A7  067A               	xorwf	_ADC_H,w
+   905  00A8  1903               	btfsc	3,2
+   906  00A9  2A41               	goto	L87
+   907                           
+   908                           ;main.c: 240: else if (ADC_H == 44) MAX7219_Transfer(0x02, 5);
+   909  00AA  302C               	movlw	44
+   910  00AB  067A               	xorwf	_ADC_H,w
+   911  00AC  1903               	btfsc	3,2
+   912  00AD  2A47               	goto	L88
+   913                           
+   914                           ;main.c: 241: else if (ADC_H == 45) MAX7219_Transfer(0x02, 6);
+   915  00AE  302D               	movlw	45
+   916  00AF  067A               	xorwf	_ADC_H,w
+   917  00B0  1903               	btfsc	3,2
+   918  00B1  2A4D               	goto	L89
+   919                           
+   920                           ;main.c: 242: else if (ADC_H == 46) MAX7219_Transfer(0x02, 7);
+   921  00B2  302E               	movlw	46
+   922  00B3  067A               	xorwf	_ADC_H,w
+   923  00B4  1903               	btfsc	3,2
+   924  00B5  2A53               	goto	L90
+   925                           
+   926                           ;main.c: 243: else if (ADC_H == 47) MAX7219_Transfer(0x02, 8);
+   927  00B6  302F               	movlw	47
+   928  00B7  067A               	xorwf	_ADC_H,w
+   929  00B8  1903               	btfsc	3,2
+   930  00B9  2A59               	goto	L91
+   931                           
+   932                           ;main.c: 244: else if (ADC_H == 48) MAX7219_Transfer(0x02, 9);
+   933  00BA  3030               	movlw	48
+   934  00BB  2A5C               	goto	L92
+   935  00BC                     l2509:	
+   936                           ;main.c: 246: }
+   937                           
+   938                           ;main.c: 245: else MAX7219_Transfer(0x02, 0);
+   939                           
+   940                           
+   941                           ;main.c: 247: else if(ADC_H >= 49 && ADC_H <= 58)
+   942  00BC  3031               	movlw	49
+   943  00BD  027A               	subwf	_ADC_H,w
+   944  00BE  1C03               	skipc
+   945  00BF  28EE               	goto	l2553
+   946  00C0  303B               	movlw	59
+   947  00C1  027A               	subwf	_ADC_H,w
+   948  00C2  1803               	skipnc
+   949  00C3  28EE               	goto	l2553
+   950                           
+   951                           ;main.c: 248: {
+   952                           ;main.c: 249: MAX7219_Transfer(0x01, 3);
+   953  00C4  3003               	movlw	3
+   954  00C5  00F8               	movwf	??_UpdateDisplay
+   955  00C6  0878               	movf	??_UpdateDisplay,w
+   956  00C7  00F3               	movwf	MAX7219_Transfer@value
+   957  00C8  3001               	movlw	1
+   958  00C9  3184  24D0  3180   	fcall	_MAX7219_Transfer
+   959                           
+   960                           ;main.c: 252: if(ADC_H == 50) MAX7219_Transfer(0x02, 1);
+   961  00CC  3032               	movlw	50
+   962  00CD  067A               	xorwf	_ADC_H,w
+   963  00CE  1903               	btfsc	3,2
+   964  00CF  2A2E               	goto	L12
+   965                           
+   966                           ;main.c: 253: else if (ADC_H == 51) MAX7219_Transfer(0x02, 2);
+   967  00D0  3033               	movlw	51
+   968  00D1  067A               	xorwf	_ADC_H,w
+   969  00D2  1903               	btfsc	3,2
+   970  00D3  2A35               	goto	L85
+   971                           
+   972                           ;main.c: 254: else if (ADC_H == 52) MAX7219_Transfer(0x02, 3);
+   973  00D4  3034               	movlw	52
+   974  00D5  067A               	xorwf	_ADC_H,w
+   975  00D6  1903               	btfsc	3,2
+   976  00D7  2A3B               	goto	L86
+   977                           
+   978                           ;main.c: 255: else if (ADC_H == 53) MAX7219_Transfer(0x02, 4);
+   979  00D8  3035               	movlw	53
+   980  00D9  067A               	xorwf	_ADC_H,w
+   981  00DA  1903               	btfsc	3,2
+   982  00DB  2A41               	goto	L87
+   983                           
+   984                           ;main.c: 256: else if (ADC_H == 54) MAX7219_Transfer(0x02, 5);
+   985  00DC  3036               	movlw	54
+   986  00DD  067A               	xorwf	_ADC_H,w
+   987  00DE  1903               	btfsc	3,2
+   988  00DF  2A47               	goto	L88
+   989                           
+   990                           ;main.c: 257: else if (ADC_H == 55) MAX7219_Transfer(0x02, 6);
+   991  00E0  3037               	movlw	55
+   992  00E1  067A               	xorwf	_ADC_H,w
+   993  00E2  1903               	btfsc	3,2
+   994  00E3  2A4D               	goto	L89
+   995                           
+   996                           ;main.c: 258: else if (ADC_H == 56) MAX7219_Transfer(0x02, 7);
+   997  00E4  3038               	movlw	56
+   998  00E5  067A               	xorwf	_ADC_H,w
+   999  00E6  1903               	btfsc	3,2
+  1000  00E7  2A53               	goto	L90
+  1001                           
+  1002                           ;main.c: 259: else if (ADC_H == 57) MAX7219_Transfer(0x02, 8);
+  1003  00E8  3039               	movlw	57
+  1004  00E9  067A               	xorwf	_ADC_H,w
+  1005  00EA  1903               	btfsc	3,2
+  1006  00EB  2A59               	goto	L91
+  1007                           
+  1008                           ;main.c: 260: else if (ADC_H == 58) MAX7219_Transfer(0x02, 9);
+  1009  00EC  303A               	movlw	58
+  1010  00ED  2A5C               	goto	L92
+  1011  00EE                     l2553:	
+  1012                           ;main.c: 262: }
+  1013                           
+  1014                           ;main.c: 261: else MAX7219_Transfer(0x02, 0);
+  1015                           
+  1016                           
+  1017                           ;main.c: 263: else if(ADC_H >= 59 && ADC_H <= 68)
+  1018  00EE  303B               	movlw	59
+  1019  00EF  027A               	subwf	_ADC_H,w
+  1020  00F0  1C03               	skipc
+  1021  00F1  2920               	goto	l2597
+  1022  00F2  3045               	movlw	69
+  1023  00F3  027A               	subwf	_ADC_H,w
+  1024  00F4  1803               	skipnc
+  1025  00F5  2920               	goto	l2597
+  1026                           
+  1027                           ;main.c: 264: {
+  1028                           ;main.c: 265: MAX7219_Transfer(0x01, 4);
+  1029  00F6  3004               	movlw	4
+  1030  00F7  00F8               	movwf	??_UpdateDisplay
+  1031  00F8  0878               	movf	??_UpdateDisplay,w
+  1032  00F9  00F3               	movwf	MAX7219_Transfer@value
+  1033  00FA  3001               	movlw	1
+  1034  00FB  3184  24D0  3180   	fcall	_MAX7219_Transfer
+  1035                           
+  1036                           ;main.c: 268: if(ADC_H == 60) MAX7219_Transfer(0x02, 1);
+  1037  00FE  303C               	movlw	60
+  1038  00FF  067A               	xorwf	_ADC_H,w
+  1039  0100  1903               	btfsc	3,2
+  1040  0101  2A2E               	goto	L12
+  1041                           
+  1042                           ;main.c: 269: else if (ADC_H == 61) MAX7219_Transfer(0x02, 2);
+  1043  0102  303D               	movlw	61
+  1044  0103  067A               	xorwf	_ADC_H,w
+  1045  0104  1903               	btfsc	3,2
+  1046  0105  2A35               	goto	L85
+  1047                           
+  1048                           ;main.c: 270: else if (ADC_H == 62) MAX7219_Transfer(0x02, 3);
+  1049  0106  303E               	movlw	62
+  1050  0107  067A               	xorwf	_ADC_H,w
+  1051  0108  1903               	btfsc	3,2
+  1052  0109  2A3B               	goto	L86
+  1053                           
+  1054                           ;main.c: 271: else if (ADC_H == 63) MAX7219_Transfer(0x02, 4);
+  1055  010A  303F               	movlw	63
+  1056  010B  067A               	xorwf	_ADC_H,w
+  1057  010C  1903               	btfsc	3,2
+  1058  010D  2A41               	goto	L87
+  1059                           
+  1060                           ;main.c: 272: else if (ADC_H == 64) MAX7219_Transfer(0x02, 5);
+  1061  010E  3040               	movlw	64
+  1062  010F  067A               	xorwf	_ADC_H,w
+  1063  0110  1903               	btfsc	3,2
+  1064  0111  2A47               	goto	L88
+  1065                           
+  1066                           ;main.c: 273: else if (ADC_H == 65) MAX7219_Transfer(0x02, 6);
+  1067  0112  3041               	movlw	65
+  1068  0113  067A               	xorwf	_ADC_H,w
+  1069  0114  1903               	btfsc	3,2
+  1070  0115  2A4D               	goto	L89
+  1071                           
+  1072                           ;main.c: 274: else if (ADC_H == 66) MAX7219_Transfer(0x02, 7);
+  1073  0116  3042               	movlw	66
+  1074  0117  067A               	xorwf	_ADC_H,w
+  1075  0118  1903               	btfsc	3,2
+  1076  0119  2A53               	goto	L90
+  1077                           
+  1078                           ;main.c: 275: else if (ADC_H == 67) MAX7219_Transfer(0x02, 8);
+  1079  011A  3043               	movlw	67
+  1080  011B  067A               	xorwf	_ADC_H,w
+  1081  011C  1903               	btfsc	3,2
+  1082  011D  2A59               	goto	L91
+  1083                           
+  1084                           ;main.c: 276: else if (ADC_H == 68) MAX7219_Transfer(0x02, 9);
+  1085  011E  3044               	movlw	68
+  1086  011F  2A5C               	goto	L92
+  1087  0120                     l2597:	
+  1088                           ;main.c: 278: }
+  1089                           
+  1090                           ;main.c: 277: else MAX7219_Transfer(0x02, 0);
+  1091                           
+  1092                           
+  1093                           ;main.c: 279: else if(ADC_H >= 69 && ADC_H <= 78)
+  1094  0120  3045               	movlw	69
+  1095  0121  027A               	subwf	_ADC_H,w
+  1096  0122  1C03               	skipc
+  1097  0123  2952               	goto	l2641
+  1098  0124  304F               	movlw	79
+  1099  0125  027A               	subwf	_ADC_H,w
+  1100  0126  1803               	skipnc
+  1101  0127  2952               	goto	l2641
+  1102                           
+  1103                           ;main.c: 280: {
+  1104                           ;main.c: 281: MAX7219_Transfer(0x01, 5);
+  1105  0128  3005               	movlw	5
+  1106  0129  00F8               	movwf	??_UpdateDisplay
+  1107  012A  0878               	movf	??_UpdateDisplay,w
+  1108  012B  00F3               	movwf	MAX7219_Transfer@value
+  1109  012C  3001               	movlw	1
+  1110  012D  3184  24D0  3180   	fcall	_MAX7219_Transfer
+  1111                           
+  1112                           ;main.c: 284: if(ADC_H == 70) MAX7219_Transfer(0x02, 1);
+  1113  0130  3046               	movlw	70
+  1114  0131  067A               	xorwf	_ADC_H,w
+  1115  0132  1903               	btfsc	3,2
+  1116  0133  2A2E               	goto	L12
+  1117                           
+  1118                           ;main.c: 285: else if (ADC_H == 71) MAX7219_Transfer(0x02, 2);
+  1119  0134  3047               	movlw	71
+  1120  0135  067A               	xorwf	_ADC_H,w
+  1121  0136  1903               	btfsc	3,2
+  1122  0137  2A35               	goto	L85
+  1123                           
+  1124                           ;main.c: 286: else if (ADC_H == 72) MAX7219_Transfer(0x02, 3);
+  1125  0138  3048               	movlw	72
+  1126  0139  067A               	xorwf	_ADC_H,w
+  1127  013A  1903               	btfsc	3,2
+  1128  013B  2A3B               	goto	L86
+  1129                           
+  1130                           ;main.c: 287: else if (ADC_H == 73) MAX7219_Transfer(0x02, 4);
+  1131  013C  3049               	movlw	73
+  1132  013D  067A               	xorwf	_ADC_H,w
+  1133  013E  1903               	btfsc	3,2
+  1134  013F  2A41               	goto	L87
+  1135                           
+  1136                           ;main.c: 288: else if (ADC_H == 74) MAX7219_Transfer(0x02, 5);
+  1137  0140  304A               	movlw	74
+  1138  0141  067A               	xorwf	_ADC_H,w
+  1139  0142  1903               	btfsc	3,2
+  1140  0143  2A47               	goto	L88
+  1141                           
+  1142                           ;main.c: 289: else if (ADC_H == 75) MAX7219_Transfer(0x02, 6);
+  1143  0144  304B               	movlw	75
+  1144  0145  067A               	xorwf	_ADC_H,w
+  1145  0146  1903               	btfsc	3,2
+  1146  0147  2A4D               	goto	L89
+  1147                           
+  1148                           ;main.c: 290: else if (ADC_H == 76) MAX7219_Transfer(0x02, 7);
+  1149  0148  304C               	movlw	76
+  1150  0149  067A               	xorwf	_ADC_H,w
+  1151  014A  1903               	btfsc	3,2
+  1152  014B  2A53               	goto	L90
+  1153                           
+  1154                           ;main.c: 291: else if (ADC_H == 77) MAX7219_Transfer(0x02, 8);
+  1155  014C  304D               	movlw	77
+  1156  014D  067A               	xorwf	_ADC_H,w
+  1157  014E  1903               	btfsc	3,2
+  1158  014F  2A59               	goto	L91
+  1159                           
+  1160                           ;main.c: 292: else if (ADC_H == 78) MAX7219_Transfer(0x02, 9);
+  1161  0150  304E               	movlw	78
+  1162  0151  2A5C               	goto	L92
+  1163  0152                     l2641:	
+  1164                           ;main.c: 294: }
+  1165                           
+  1166                           ;main.c: 293: else MAX7219_Transfer(0x02, 0);
+  1167                           
+  1168                           
+  1169                           ;main.c: 295: else if(ADC_H >= 79 && ADC_H <= 88)
+  1170  0152  304F               	movlw	79
+  1171  0153  027A               	subwf	_ADC_H,w
+  1172  0154  1C03               	skipc
+  1173  0155  2984               	goto	l2685
+  1174  0156  3059               	movlw	89
+  1175  0157  027A               	subwf	_ADC_H,w
+  1176  0158  1803               	skipnc
+  1177  0159  2984               	goto	l2685
+  1178                           
+  1179                           ;main.c: 296: {
+  1180                           ;main.c: 297: MAX7219_Transfer(0x01, 6);
+  1181  015A  3006               	movlw	6
+  1182  015B  00F8               	movwf	??_UpdateDisplay
+  1183  015C  0878               	movf	??_UpdateDisplay,w
+  1184  015D  00F3               	movwf	MAX7219_Transfer@value
+  1185  015E  3001               	movlw	1
+  1186  015F  3184  24D0  3180   	fcall	_MAX7219_Transfer
+  1187                           
+  1188                           ;main.c: 300: if(ADC_H == 80) MAX7219_Transfer(0x02, 1);
+  1189  0162  3050               	movlw	80
+  1190  0163  067A               	xorwf	_ADC_H,w
+  1191  0164  1903               	btfsc	3,2
+  1192  0165  2A2E               	goto	L12
+  1193                           
+  1194                           ;main.c: 301: else if (ADC_H == 81) MAX7219_Transfer(0x02, 2);
+  1195  0166  3051               	movlw	81
+  1196  0167  067A               	xorwf	_ADC_H,w
+  1197  0168  1903               	btfsc	3,2
+  1198  0169  2A35               	goto	L85
+  1199                           
+  1200                           ;main.c: 302: else if (ADC_H == 82) MAX7219_Transfer(0x02, 3);
+  1201  016A  3052               	movlw	82
+  1202  016B  067A               	xorwf	_ADC_H,w
+  1203  016C  1903               	btfsc	3,2
+  1204  016D  2A3B               	goto	L86
+  1205                           
+  1206                           ;main.c: 303: else if (ADC_H == 83) MAX7219_Transfer(0x02, 4);
+  1207  016E  3053               	movlw	83
+  1208  016F  067A               	xorwf	_ADC_H,w
+  1209  0170  1903               	btfsc	3,2
+  1210  0171  2A41               	goto	L87
+  1211                           
+  1212                           ;main.c: 304: else if (ADC_H == 84) MAX7219_Transfer(0x02, 5);
+  1213  0172  3054               	movlw	84
+  1214  0173  067A               	xorwf	_ADC_H,w
+  1215  0174  1903               	btfsc	3,2
+  1216  0175  2A47               	goto	L88
+  1217                           
+  1218                           ;main.c: 305: else if (ADC_H == 85) MAX7219_Transfer(0x02, 6);
+  1219  0176  3055               	movlw	85
+  1220  0177  067A               	xorwf	_ADC_H,w
+  1221  0178  1903               	btfsc	3,2
+  1222  0179  2A4D               	goto	L89
+  1223                           
+  1224                           ;main.c: 306: else if (ADC_H == 86) MAX7219_Transfer(0x02, 7);
+  1225  017A  3056               	movlw	86
+  1226  017B  067A               	xorwf	_ADC_H,w
+  1227  017C  1903               	btfsc	3,2
+  1228  017D  2A53               	goto	L90
+  1229                           
+  1230                           ;main.c: 307: else if (ADC_H == 87) MAX7219_Transfer(0x02, 8);
+  1231  017E  3057               	movlw	87
+  1232  017F  067A               	xorwf	_ADC_H,w
+  1233  0180  1903               	btfsc	3,2
+  1234  0181  2A59               	goto	L91
+  1235                           
+  1236                           ;main.c: 308: else if (ADC_H == 88) MAX7219_Transfer(0x02, 9);
+  1237  0182  3058               	movlw	88
+  1238  0183  2A5C               	goto	L92
+  1239  0184                     l2685:	
+  1240                           ;main.c: 310: }
+  1241                           
+  1242                           ;main.c: 309: else MAX7219_Transfer(0x02, 0);
+  1243                           
+  1244                           
+  1245                           ;main.c: 311: else if(ADC_H >= 89 && ADC_H <= 98)
+  1246  0184  3059               	movlw	89
+  1247  0185  027A               	subwf	_ADC_H,w
+  1248  0186  1C03               	skipc
+  1249  0187  29B6               	goto	l2729
+  1250  0188  3063               	movlw	99
+  1251  0189  027A               	subwf	_ADC_H,w
+  1252  018A  1803               	skipnc
+  1253  018B  29B6               	goto	l2729
+  1254                           
+  1255                           ;main.c: 312: {
+  1256                           ;main.c: 313: MAX7219_Transfer(0x01, 7);
+  1257  018C  3007               	movlw	7
+  1258  018D  00F8               	movwf	??_UpdateDisplay
+  1259  018E  0878               	movf	??_UpdateDisplay,w
+  1260  018F  00F3               	movwf	MAX7219_Transfer@value
+  1261  0190  3001               	movlw	1
+  1262  0191  3184  24D0  3180   	fcall	_MAX7219_Transfer
+  1263                           
+  1264                           ;main.c: 316: if(ADC_H == 90) MAX7219_Transfer(0x02, 1);
+  1265  0194  305A               	movlw	90
+  1266  0195  067A               	xorwf	_ADC_H,w
+  1267  0196  1903               	btfsc	3,2
+  1268  0197  2A2E               	goto	L12
+  1269                           
+  1270                           ;main.c: 317: else if (ADC_H == 91) MAX7219_Transfer(0x02, 2);
+  1271  0198  305B               	movlw	91
+  1272  0199  067A               	xorwf	_ADC_H,w
+  1273  019A  1903               	btfsc	3,2
+  1274  019B  2A35               	goto	L85
+  1275                           
+  1276                           ;main.c: 318: else if (ADC_H == 92) MAX7219_Transfer(0x02, 3);
+  1277  019C  305C               	movlw	92
+  1278  019D  067A               	xorwf	_ADC_H,w
+  1279  019E  1903               	btfsc	3,2
+  1280  019F  2A3B               	goto	L86
+  1281                           
+  1282                           ;main.c: 319: else if (ADC_H == 93) MAX7219_Transfer(0x02, 4);
+  1283  01A0  305D               	movlw	93
+  1284  01A1  067A               	xorwf	_ADC_H,w
+  1285  01A2  1903               	btfsc	3,2
+  1286  01A3  2A41               	goto	L87
+  1287                           
+  1288                           ;main.c: 320: else if (ADC_H == 94) MAX7219_Transfer(0x02, 5);
+  1289  01A4  305E               	movlw	94
+  1290  01A5  067A               	xorwf	_ADC_H,w
+  1291  01A6  1903               	btfsc	3,2
+  1292  01A7  2A47               	goto	L88
+  1293                           
+  1294                           ;main.c: 321: else if (ADC_H == 95) MAX7219_Transfer(0x02, 6);
+  1295  01A8  305F               	movlw	95
+  1296  01A9  067A               	xorwf	_ADC_H,w
+  1297  01AA  1903               	btfsc	3,2
+  1298  01AB  2A4D               	goto	L89
+  1299                           
+  1300                           ;main.c: 322: else if (ADC_H == 96) MAX7219_Transfer(0x02, 7);
+  1301  01AC  3060               	movlw	96
+  1302  01AD  067A               	xorwf	_ADC_H,w
+  1303  01AE  1903               	btfsc	3,2
+  1304  01AF  2A53               	goto	L90
+  1305                           
+  1306                           ;main.c: 323: else if (ADC_H == 97) MAX7219_Transfer(0x02, 8);
+  1307  01B0  3061               	movlw	97
+  1308  01B1  067A               	xorwf	_ADC_H,w
+  1309  01B2  1903               	btfsc	3,2
+  1310  01B3  2A59               	goto	L91
+  1311                           
+  1312                           ;main.c: 324: else if (ADC_H == 98) MAX7219_Transfer(0x02, 9);
+  1313  01B4  3062               	movlw	98
+  1314  01B5  2A5C               	goto	L92
+  1315  01B6                     l2729:	
+  1316                           ;main.c: 326: }
+  1317                           
+  1318                           ;main.c: 325: else MAX7219_Transfer(0x02, 0);
+  1319                           
+  1320                           
+  1321                           ;main.c: 327: else if(ADC_H >= 99 && ADC_H <= 108)
+  1322  01B6  3063               	movlw	99
+  1323  01B7  027A               	subwf	_ADC_H,w
+  1324  01B8  1C03               	skipc
+  1325  01B9  29E8               	goto	l2773
+  1326  01BA  306D               	movlw	109
+  1327  01BB  027A               	subwf	_ADC_H,w
+  1328  01BC  1803               	skipnc
+  1329  01BD  29E8               	goto	l2773
+  1330                           
+  1331                           ;main.c: 328: {
+  1332                           ;main.c: 329: MAX7219_Transfer(0x01, 8);
+  1333  01BE  3008               	movlw	8
+  1334  01BF  00F8               	movwf	??_UpdateDisplay
+  1335  01C0  0878               	movf	??_UpdateDisplay,w
+  1336  01C1  00F3               	movwf	MAX7219_Transfer@value
+  1337  01C2  3001               	movlw	1
+  1338  01C3  3184  24D0  3180   	fcall	_MAX7219_Transfer
+  1339                           
+  1340                           ;main.c: 332: if(ADC_H == 100) MAX7219_Transfer(0x02, 1);
+  1341  01C6  3064               	movlw	100
+  1342  01C7  067A               	xorwf	_ADC_H,w
+  1343  01C8  1903               	btfsc	3,2
+  1344  01C9  2A2E               	goto	L12
+  1345                           
+  1346                           ;main.c: 333: else if (ADC_H == 101) MAX7219_Transfer(0x02, 2);
+  1347  01CA  3065               	movlw	101
+  1348  01CB  067A               	xorwf	_ADC_H,w
+  1349  01CC  1903               	btfsc	3,2
+  1350  01CD  2A35               	goto	L85
+  1351                           
+  1352                           ;main.c: 334: else if (ADC_H == 102) MAX7219_Transfer(0x02, 3);
+  1353  01CE  3066               	movlw	102
+  1354  01CF  067A               	xorwf	_ADC_H,w
+  1355  01D0  1903               	btfsc	3,2
+  1356  01D1  2A3B               	goto	L86
+  1357                           
+  1358                           ;main.c: 335: else if (ADC_H == 103) MAX7219_Transfer(0x02, 4);
+  1359  01D2  3067               	movlw	103
+  1360  01D3  067A               	xorwf	_ADC_H,w
+  1361  01D4  1903               	btfsc	3,2
+  1362  01D5  2A41               	goto	L87
+  1363                           
+  1364                           ;main.c: 336: else if (ADC_H == 104) MAX7219_Transfer(0x02, 5);
+  1365  01D6  3068               	movlw	104
+  1366  01D7  067A               	xorwf	_ADC_H,w
+  1367  01D8  1903               	btfsc	3,2
+  1368  01D9  2A47               	goto	L88
+  1369                           
+  1370                           ;main.c: 337: else if (ADC_H == 105) MAX7219_Transfer(0x02, 6);
+  1371  01DA  3069               	movlw	105
+  1372  01DB  067A               	xorwf	_ADC_H,w
+  1373  01DC  1903               	btfsc	3,2
+  1374  01DD  2A4D               	goto	L89
+  1375                           
+  1376                           ;main.c: 338: else if (ADC_H == 106) MAX7219_Transfer(0x02, 7);
+  1377  01DE  306A               	movlw	106
+  1378  01DF  067A               	xorwf	_ADC_H,w
+  1379  01E0  1903               	btfsc	3,2
+  1380  01E1  2A53               	goto	L90
+  1381                           
+  1382                           ;main.c: 339: else if (ADC_H == 107) MAX7219_Transfer(0x02, 8);
+  1383  01E2  306B               	movlw	107
+  1384  01E3  067A               	xorwf	_ADC_H,w
+  1385  01E4  1903               	btfsc	3,2
+  1386  01E5  2A59               	goto	L91
+  1387                           
+  1388                           ;main.c: 340: else if (ADC_H == 108) MAX7219_Transfer(0x02, 9);
+  1389  01E6  306C               	movlw	108
+  1390  01E7  2A5C               	goto	L92
+  1391  01E8                     l2773:	
+  1392                           ;main.c: 342: }
+  1393                           
+  1394                           ;main.c: 341: else MAX7219_Transfer(0x02, 0);
+  1395                           
+  1396                           
+  1397                           ;main.c: 343: else if(ADC_H >= 109 && ADC_H <= 118)
+  1398  01E8  306D               	movlw	109
+  1399  01E9  027A               	subwf	_ADC_H,w
+  1400  01EA  1C03               	skipc
+  1401  01EB  2A1A               	goto	l2817
+  1402  01EC  3077               	movlw	119
+  1403  01ED  027A               	subwf	_ADC_H,w
+  1404  01EE  1803               	skipnc
+  1405  01EF  2A1A               	goto	l2817
+  1406                           
+  1407                           ;main.c: 344: {
+  1408                           ;main.c: 345: MAX7219_Transfer(0x01, 8);
+  1409  01F0  3008               	movlw	8
+  1410  01F1  00F8               	movwf	??_UpdateDisplay
+  1411  01F2  0878               	movf	??_UpdateDisplay,w
+  1412  01F3  00F3               	movwf	MAX7219_Transfer@value
+  1413  01F4  3001               	movlw	1
+  1414  01F5  3184  24D0  3180   	fcall	_MAX7219_Transfer
+  1415                           
+  1416                           ;main.c: 348: if(ADC_H == 110) MAX7219_Transfer(0x02, 1);
+  1417  01F8  306E               	movlw	110
+  1418  01F9  067A               	xorwf	_ADC_H,w
+  1419  01FA  1903               	btfsc	3,2
+  1420  01FB  2A2E               	goto	L12
+  1421                           
+  1422                           ;main.c: 349: else if (ADC_H == 111) MAX7219_Transfer(0x02, 2);
+  1423  01FC  306F               	movlw	111
+  1424  01FD  067A               	xorwf	_ADC_H,w
+  1425  01FE  1903               	btfsc	3,2
+  1426  01FF  2A35               	goto	L85
+  1427                           
+  1428                           ;main.c: 350: else if (ADC_H == 112) MAX7219_Transfer(0x02, 3);
+  1429  0200  3070               	movlw	112
+  1430  0201  067A               	xorwf	_ADC_H,w
+  1431  0202  1903               	btfsc	3,2
+  1432  0203  2A3B               	goto	L86
+  1433                           
+  1434                           ;main.c: 351: else if (ADC_H == 113) MAX7219_Transfer(0x02, 4);
+  1435  0204  3071               	movlw	113
+  1436  0205  067A               	xorwf	_ADC_H,w
+  1437  0206  1903               	btfsc	3,2
+  1438  0207  2A41               	goto	L87
+  1439                           
+  1440                           ;main.c: 352: else if (ADC_H == 114) MAX7219_Transfer(0x02, 5);
+  1441  0208  3072               	movlw	114
+  1442  0209  067A               	xorwf	_ADC_H,w
+  1443  020A  1903               	btfsc	3,2
+  1444  020B  2A47               	goto	L88
+  1445                           
+  1446                           ;main.c: 353: else if (ADC_H == 115) MAX7219_Transfer(0x02, 6);
+  1447  020C  3073               	movlw	115
+  1448  020D  067A               	xorwf	_ADC_H,w
+  1449  020E  1903               	btfsc	3,2
+  1450  020F  2A4D               	goto	L89
+  1451                           
+  1452                           ;main.c: 354: else if (ADC_H == 116) MAX7219_Transfer(0x02, 7);
+  1453  0210  3074               	movlw	116
+  1454  0211  067A               	xorwf	_ADC_H,w
+  1455  0212  1903               	btfsc	3,2
+  1456  0213  2A53               	goto	L90
+  1457                           
+  1458                           ;main.c: 355: else if (ADC_H == 117) MAX7219_Transfer(0x02, 8);
+  1459  0214  3075               	movlw	117
+  1460  0215  067A               	xorwf	_ADC_H,w
+  1461  0216  1903               	btfsc	3,2
+  1462  0217  2A59               	goto	L91
+  1463                           
+  1464                           ;main.c: 356: else if (ADC_H == 118) MAX7219_Transfer(0x02, 9);
+  1465  0218  3076               	movlw	118
+  1466  0219  2A5C               	goto	L92
+  1467  021A                     l2817:	
+  1468                           ;main.c: 358: }
+  1469                           
+  1470                           ;main.c: 357: else MAX7219_Transfer(0x02, 0);
+  1471                           
+  1472                           
+  1473                           ;main.c: 359: else if(ADC_H >= 119 && ADC_H <= 128)
+  1474  021A  3077               	movlw	119
+  1475  021B  027A               	subwf	_ADC_H,w
+  1476  021C  1C03               	skipc
+  1477  021D  2A63               	goto	l2861
+  1478  021E  3081               	movlw	129
+  1479  021F  027A               	subwf	_ADC_H,w
+  1480  0220  1803               	skipnc
+  1481  0221  2A63               	goto	l2861
+  1482                           
+  1483                           ;main.c: 360: {
+  1484                           ;main.c: 361: MAX7219_Transfer(0x01, 9);
+  1485  0222  3009               	movlw	9
+  1486  0223  00F8               	movwf	??_UpdateDisplay
+  1487  0224  0878               	movf	??_UpdateDisplay,w
+  1488  0225  00F3               	movwf	MAX7219_Transfer@value
+  1489  0226  3001               	movlw	1
+  1490  0227  3184  24D0  3180   	fcall	_MAX7219_Transfer
+  1491                           
+  1492                           ;main.c: 364: if(ADC_H == 120) MAX7219_Transfer(0x02, 1);
+  1493  022A  3078               	movlw	120
+  1494  022B  067A               	xorwf	_ADC_H,w
+  1495  022C  1D03               	btfss	3,2
+  1496  022D  2A31               	goto	l2827
+  1497  022E                     L12:	
+  1498  022E  01F3               	clrf	MAX7219_Transfer@value
+  1499  022F  0AF3               	incf	MAX7219_Transfer@value,f
+  1500  0230  2A6F               	goto	L1
+  1501  0231                     l2827:	
+  1502                           
+  1503                           ;main.c: 365: else if (ADC_H == 121) MAX7219_Transfer(0x02, 2);
+  1504  0231  3079               	movlw	121
+  1505  0232  067A               	xorwf	_ADC_H,w
+  1506  0233  1D03               	btfss	3,2
+  1507  0234  2A37               	goto	l2831
+  1508  0235                     L85:	
+  1509  0235  3002               	movlw	2
+  1510  0236  2A6C               	goto	L3
+  1511  0237                     l2831:	
+  1512                           
+  1513                           ;main.c: 366: else if (ADC_H == 122) MAX7219_Transfer(0x02, 3);
+  1514  0237  307A               	movlw	122
+  1515  0238  067A               	xorwf	_ADC_H,w
+  1516  0239  1D03               	btfss	3,2
+  1517  023A  2A3D               	goto	l2835
+  1518  023B                     L86:	
+  1519  023B  3003               	movlw	3
+  1520  023C  2A6C               	goto	L3
+  1521  023D                     l2835:	
+  1522                           
+  1523                           ;main.c: 367: else if (ADC_H == 123) MAX7219_Transfer(0x02, 4);
+  1524  023D  307B               	movlw	123
+  1525  023E  067A               	xorwf	_ADC_H,w
+  1526  023F  1D03               	btfss	3,2
+  1527  0240  2A43               	goto	l2839
+  1528  0241                     L87:	
+  1529  0241  3004               	movlw	4
+  1530  0242  2A6C               	goto	L3
+  1531  0243                     l2839:	
+  1532                           
+  1533                           ;main.c: 368: else if (ADC_H == 124) MAX7219_Transfer(0x02, 5);
+  1534  0243  307C               	movlw	124
+  1535  0244  067A               	xorwf	_ADC_H,w
+  1536  0245  1D03               	btfss	3,2
+  1537  0246  2A49               	goto	l2843
+  1538  0247                     L88:	
+  1539  0247  3005               	movlw	5
+  1540  0248  2A6C               	goto	L3
+  1541  0249                     l2843:	
+  1542                           
+  1543                           ;main.c: 369: else if (ADC_H == 125) MAX7219_Transfer(0x02, 6);
+  1544  0249  307D               	movlw	125
+  1545  024A  067A               	xorwf	_ADC_H,w
+  1546  024B  1D03               	btfss	3,2
+  1547  024C  2A4F               	goto	l2847
+  1548  024D                     L89:	
+  1549  024D  3006               	movlw	6
+  1550  024E  2A6C               	goto	L3
+  1551  024F                     l2847:	
+  1552                           
+  1553                           ;main.c: 370: else if (ADC_H == 126) MAX7219_Transfer(0x02, 7);
+  1554  024F  307E               	movlw	126
+  1555  0250  067A               	xorwf	_ADC_H,w
+  1556  0251  1D03               	btfss	3,2
+  1557  0252  2A55               	goto	l2851
+  1558  0253                     L90:	
+  1559  0253  3007               	movlw	7
+  1560  0254  2A6C               	goto	L3
+  1561  0255                     l2851:	
+  1562                           
+  1563                           ;main.c: 371: else if (ADC_H == 127) MAX7219_Transfer(0x02, 8);
+  1564  0255  307F               	movlw	127
+  1565  0256  067A               	xorwf	_ADC_H,w
+  1566  0257  1D03               	btfss	3,2
+  1567  0258  2A5B               	goto	l2855
+  1568  0259                     L91:	
+  1569  0259  3008               	movlw	8
+  1570  025A  2A6C               	goto	L3
+  1571  025B                     l2855:	
+  1572                           
+  1573                           ;main.c: 372: else if (ADC_H == 128) MAX7219_Transfer(0x02, 9);
+  1574  025B  3080               	movlw	128
+  1575  025C                     L92:	
+  1576  025C  067A               	xorwf	_ADC_H,w
+  1577  025D  1D03               	btfss	3,2
+  1578  025E  2A61               	goto	l2859
+  1579  025F  3009               	movlw	9
+  1580  0260  2A6C               	goto	L3
+  1581  0261                     l2859:	
+  1582                           
+  1583                           ;main.c: 373: else MAX7219_Transfer(0x02, 0);
+  1584  0261  01F3               	clrf	MAX7219_Transfer@value
+  1585  0262  2A6F               	goto	L1
+  1586  0263                     l2861:	
+  1587                           ;main.c: 374: }
+  1588                           
+  1589                           
+  1590                           ;main.c: 375: else
+  1591                           ;main.c: 376: {
+  1592                           ;main.c: 377: MAX7219_Transfer(0x01, 11);
+  1593  0263  300B               	movlw	11
+  1594  0264  00F8               	movwf	??_UpdateDisplay
+  1595  0265  0878               	movf	??_UpdateDisplay,w
+  1596  0266  00F3               	movwf	MAX7219_Transfer@value
+  1597  0267  3001               	movlw	1
+  1598  0268  3184  24D0  3180   	fcall	_MAX7219_Transfer
+  1599                           
+  1600                           ;main.c: 378: MAX7219_Transfer(0x02, 11);
+  1601  026B  300B               	movlw	11
+  1602  026C                     L3:	
+  1603  026C  00F8               	movwf	??_UpdateDisplay
+  1604  026D  0878               	movf	??_UpdateDisplay,w
+  1605  026E  00F3               	movwf	MAX7219_Transfer@value
+  1606  026F                     L1:	
+  1607  026F  3002               	movlw	2
+  1608  0270  3184  24D0  3180   	fcall	_MAX7219_Transfer
+  1609                           
+  1610                           ;main.c: 379: }
+  1611                           ;main.c: 381: if(ADC_H >= 123)
+  1612  0273  307B               	movlw	123
+  1613  0274  027A               	subwf	_ADC_H,w
+  1614  0275  1C03               	skipc
+  1615  0276  2A7F               	goto	l2869
+  1616                           
+  1617                           ;main.c: 382: {
+  1618                           ;main.c: 383: Hot_Flag = 1;
+  1619  0277  3001               	movlw	1
+  1620  0278  0020               	movlb	0	; select bank0
+  1621  0279  00A2               	movwf	_Hot_Flag
+  1622  027A  3000               	movlw	0
+  1623  027B  00A3               	movwf	_Hot_Flag+1
+  1624                           
+  1625                           ;main.c: 384: WarningFlash();
+  1626  027C  3183  23AE  3180   	fcall	_WarningFlash
+  1627  027F                     l2869:	
+  1628                           
+  1629                           ;main.c: 385: }
+  1630                           ;main.c: 387: if(ADC_H <= 59)
+  1631  027F  303C               	movlw	60
+  1632  0280  027A               	subwf	_ADC_H,w
+  1633  0281  1803               	skipnc
+  1634  0282  0008               	return
+  1635                           
+  1636                           ;main.c: 388: {
+  1637                           ;main.c: 389: Cold_Flag = 1;
+  1638  0283  3001               	movlw	1
+  1639  0284  0020               	movlb	0	; select bank0
+  1640  0285  00A0               	movwf	_Cold_Flag
+  1641  0286  3000               	movlw	0
+  1642  0287  00A1               	movwf	_Cold_Flag+1
+  1643                           
+  1644                           ;main.c: 390: WarningFlash();
+  1645  0288  3183  23AE         	fcall	_WarningFlash
+  1646  028A  0008               	return
+  1647  028B                     __end_of_UpdateDisplay:	
+  1648                           
+  1649                           	psect	text2
+  1650  03AE                     __ptext2:	
+  1651 ;; *************** function _WarningFlash *****************
+  1652 ;; Defined at:
+  1653 ;;		line 166 in file "main.c"
+  1654 ;; Parameters:    Size  Location     Type
+  1655 ;;		None
+  1656 ;; Auto vars:     Size  Location     Type
+  1657 ;;  i               2    2[BANK0 ] int 
+  1658 ;;  i               2    0[BANK0 ] int 
+  1659 ;; Return value:  Size  Location     Type
+  1660 ;;                  1    wreg      void 
+  1661 ;; Registers used:
+  1662 ;;		wreg, status,2, status,0, pclath, cstack
+  1663 ;; Tracked objects:
+  1664 ;;		On entry : 0/0
+  1665 ;;		On exit  : 0/0
+  1666 ;;		Unchanged: 0/0
+  1667 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
+  1668 ;;      Params:         0       0       0       0       0       0       0       0
+  1669 ;;      Locals:         0       4       0       0       0       0       0       0
+  1670 ;;      Temps:          2       0       0       0       0       0       0       0
+  1671 ;;      Totals:         2       4       0       0       0       0       0       0
+  1672 ;;Total ram usage:        6 bytes
+  1673 ;; Hardware stack levels used:    1
+  1674 ;; Hardware stack levels required when called:    3
+  1675 ;; This function calls:
+  1676 ;;		_MAX7219_Transfer
+  1677 ;; This function is called by:
+  1678 ;;		_UpdateDisplay
+  1679 ;; This function uses a non-reentrant model
+  1680 ;;
+  1681                           
+  1682                           
+  1683                           ;psect for function _WarningFlash
+  1684  03AE                     _WarningFlash:	
+  1685                           
+  1686                           ;main.c: 168: if(Hot_Flag == 1)
+  1687                           
+  1688                           ;incstack = 0
+  1689                           ; Regs used in _WarningFlash: [wreg+status,2+status,0+pclath+cstack]
+  1690  03AE  0020               	movlb	0	; select bank0
+  1691  03AF  0322               	decf	_Hot_Flag,w
+  1692  03B0  0423               	iorwf	_Hot_Flag+1,w
+  1693  03B1  1D03               	btfss	3,2
+  1694  03B2  2C09               	goto	l2277
+  1695                           
+  1696                           ;main.c: 169: {
+  1697                           ;main.c: 170: for(int i = 0; i < 3; i++)
+  1698  03B3  01A6               	clrf	WarningFlash@i
+  1699  03B4  01A7               	clrf	WarningFlash@i+1
+  1700  03B5  0827               	movf	WarningFlash@i+1,w
+  1701  03B6  3A80               	xorlw	128
+  1702  03B7  00F6               	movwf	??_WarningFlash
+  1703  03B8  3080               	movlw	128
+  1704  03B9  0276               	subwf	??_WarningFlash,w
+  1705  03BA  1D03               	skipz
+  1706  03BB  2BBE               	goto	u2745
+  1707  03BC  3003               	movlw	3
+  1708  03BD  0226               	subwf	WarningFlash@i,w
+  1709  03BE                     u2745:	
+  1710  03BE  1803               	btfsc	3,0
+  1711  03BF  2C06               	goto	l2275
+  1712  03C0                     l2265:	
+  1713                           
+  1714                           ;main.c: 171: {
+  1715                           ;main.c: 172: _delay((unsigned long)((750)*(4000000/4000.0)));
+  1716  03C0  3004               	movlw	4
+  1717  03C1  00F7               	movwf	??_WarningFlash+1
+  1718  03C2  30CF               	movlw	207
+  1719  03C3  00F6               	movwf	??_WarningFlash
+  1720  03C4  3002               	movlw	2
+  1721  03C5                     u4077:	
+  1722  03C5  0B89               	decfsz	9,f
+  1723  03C6  2BC5               	goto	u4077
+  1724  03C7  0BF6               	decfsz	??_WarningFlash,f
+  1725  03C8  2BC5               	goto	u4077
+  1726  03C9  0BF7               	decfsz	??_WarningFlash+1,f
+  1727  03CA  2BC5               	goto	u4077
+  1728                           
+  1729                           ;main.c: 173: MAX7219_Transfer(0x01, 12);
+  1730  03CB  300C               	movlw	12
+  1731  03CC  00F6               	movwf	??_WarningFlash
+  1732  03CD  0876               	movf	??_WarningFlash,w
+  1733  03CE  00F3               	movwf	MAX7219_Transfer@value
+  1734  03CF  3001               	movlw	1
+  1735  03D0  3184  24D0  3183   	fcall	_MAX7219_Transfer
+  1736                           
+  1737                           ;main.c: 174: MAX7219_Transfer(0x02, 12);
+  1738  03D3  300C               	movlw	12
+  1739  03D4  00F6               	movwf	??_WarningFlash
+  1740  03D5  0876               	movf	??_WarningFlash,w
+  1741  03D6  00F3               	movwf	MAX7219_Transfer@value
+  1742  03D7  3002               	movlw	2
+  1743  03D8  3184  24D0  3183   	fcall	_MAX7219_Transfer
+  1744                           
+  1745                           ;main.c: 175: _delay((unsigned long)((500)*(4000000/4000.0)));
+  1746  03DB  3003               	movlw	3
+  1747  03DC  00F7               	movwf	??_WarningFlash+1
+  1748  03DD  308A               	movlw	138
+  1749  03DE  00F6               	movwf	??_WarningFlash
+  1750  03DF  3056               	movlw	86
+  1751  03E0                     u4087:	
+  1752  03E0  0B89               	decfsz	9,f
+  1753  03E1  2BE0               	goto	u4087
+  1754  03E2  0BF6               	decfsz	??_WarningFlash,f
+  1755  03E3  2BE0               	goto	u4087
+  1756  03E4  0BF7               	decfsz	??_WarningFlash+1,f
+  1757  03E5  2BE0               	goto	u4087
+  1758                           
+  1759                           ;main.c: 176: MAX7219_Transfer(0x01, 15);
+  1760  03E6  300F               	movlw	15
+  1761  03E7  00F6               	movwf	??_WarningFlash
+  1762  03E8  0876               	movf	??_WarningFlash,w
+  1763  03E9  00F3               	movwf	MAX7219_Transfer@value
+  1764  03EA  3001               	movlw	1
+  1765  03EB  3184  24D0  3183   	fcall	_MAX7219_Transfer
+  1766                           
+  1767                           ;main.c: 177: MAX7219_Transfer(0x02, 15);
+  1768  03EE  300F               	movlw	15
+  1769  03EF  00F6               	movwf	??_WarningFlash
+  1770  03F0  0876               	movf	??_WarningFlash,w
+  1771  03F1  00F3               	movwf	MAX7219_Transfer@value
+  1772  03F2  3002               	movlw	2
+  1773  03F3  3184  24D0  3183   	fcall	_MAX7219_Transfer
+  1774  03F6  3001               	movlw	1
+  1775  03F7  0020               	movlb	0	; select bank0
+  1776  03F8  07A6               	addwf	WarningFlash@i,f
+  1777  03F9  3000               	movlw	0
+  1778  03FA  3DA7               	addwfc	WarningFlash@i+1,f
+  1779  03FB  0827               	movf	WarningFlash@i+1,w
+  1780  03FC  3A80               	xorlw	128
+  1781  03FD  00F6               	movwf	??_WarningFlash
+  1782  03FE  3080               	movlw	128
+  1783  03FF  0276               	subwf	??_WarningFlash,w
+  1784  0400  1D03               	skipz
+  1785  0401  2C04               	goto	u2755
+  1786  0402  3003               	movlw	3
+  1787  0403  0226               	subwf	WarningFlash@i,w
+  1788  0404                     u2755:	
+  1789  0404  1C03               	skipc
+  1790  0405  2BC0               	goto	l2265
+  1791  0406                     l2275:	
+  1792                           
+  1793                           ;main.c: 178: }
+  1794                           ;main.c: 179: Hot_Flag = 0;
+  1795  0406  0020               	movlb	0	; select bank0
+  1796  0407  01A2               	clrf	_Hot_Flag
+  1797  0408  01A3               	clrf	_Hot_Flag+1
+  1798  0409                     l2277:	
+  1799                           
+  1800                           ;main.c: 180: }
+  1801                           ;main.c: 182: if(Cold_Flag == 1)
+  1802  0409  0320               	decf	_Cold_Flag,w
+  1803  040A  0421               	iorwf	_Cold_Flag+1,w
+  1804  040B  1D03               	btfss	3,2
+  1805  040C  0008               	return
+  1806                           
+  1807                           ;main.c: 183: {
+  1808                           ;main.c: 184: for(int i = 0; i < 3; i++)
+  1809  040D  01A8               	clrf	WarningFlash@i_325
+  1810  040E  01A9               	clrf	WarningFlash@i_325+1
+  1811  040F  0829               	movf	WarningFlash@i_325+1,w
+  1812  0410  3A80               	xorlw	128
+  1813  0411  00F6               	movwf	??_WarningFlash
+  1814  0412  3080               	movlw	128
+  1815  0413  0276               	subwf	??_WarningFlash,w
+  1816  0414  1D03               	skipz
+  1817  0415  2C18               	goto	u2775
+  1818  0416  3003               	movlw	3
+  1819  0417  0228               	subwf	WarningFlash@i_325,w
+  1820  0418                     u2775:	
+  1821  0418  1803               	btfsc	3,0
+  1822  0419  2C60               	goto	l2295
+  1823  041A                     l2285:	
+  1824                           
+  1825                           ;main.c: 185: {
+  1826                           ;main.c: 186: _delay((unsigned long)((750)*(4000000/4000.0)));
+  1827  041A  3004               	movlw	4
+  1828  041B  00F7               	movwf	??_WarningFlash+1
+  1829  041C  30CF               	movlw	207
+  1830  041D  00F6               	movwf	??_WarningFlash
+  1831  041E  3002               	movlw	2
+  1832  041F                     u4097:	
+  1833  041F  0B89               	decfsz	9,f
+  1834  0420  2C1F               	goto	u4097
+  1835  0421  0BF6               	decfsz	??_WarningFlash,f
+  1836  0422  2C1F               	goto	u4097
+  1837  0423  0BF7               	decfsz	??_WarningFlash+1,f
+  1838  0424  2C1F               	goto	u4097
+  1839                           
+  1840                           ;main.c: 187: MAX7219_Transfer(0x01, 13);
+  1841  0425  300D               	movlw	13
+  1842  0426  00F6               	movwf	??_WarningFlash
+  1843  0427  0876               	movf	??_WarningFlash,w
+  1844  0428  00F3               	movwf	MAX7219_Transfer@value
+  1845  0429  3001               	movlw	1
+  1846  042A  3184  24D0  3183   	fcall	_MAX7219_Transfer
+  1847                           
+  1848                           ;main.c: 188: MAX7219_Transfer(0x02, 13);
+  1849  042D  300D               	movlw	13
+  1850  042E  00F6               	movwf	??_WarningFlash
+  1851  042F  0876               	movf	??_WarningFlash,w
+  1852  0430  00F3               	movwf	MAX7219_Transfer@value
+  1853  0431  3002               	movlw	2
+  1854  0432  3184  24D0  3183   	fcall	_MAX7219_Transfer
+  1855                           
+  1856                           ;main.c: 189: _delay((unsigned long)((500)*(4000000/4000.0)));
+  1857  0435  3003               	movlw	3
+  1858  0436  00F7               	movwf	??_WarningFlash+1
+  1859  0437  308A               	movlw	138
+  1860  0438  00F6               	movwf	??_WarningFlash
+  1861  0439  3056               	movlw	86
+  1862  043A                     u4107:	
+  1863  043A  0B89               	decfsz	9,f
+  1864  043B  2C3A               	goto	u4107
+  1865  043C  0BF6               	decfsz	??_WarningFlash,f
+  1866  043D  2C3A               	goto	u4107
+  1867  043E  0BF7               	decfsz	??_WarningFlash+1,f
+  1868  043F  2C3A               	goto	u4107
+  1869                           
+  1870                           ;main.c: 190: MAX7219_Transfer(0x01, 15);
+  1871  0440  300F               	movlw	15
+  1872  0441  00F6               	movwf	??_WarningFlash
+  1873  0442  0876               	movf	??_WarningFlash,w
+  1874  0443  00F3               	movwf	MAX7219_Transfer@value
+  1875  0444  3001               	movlw	1
+  1876  0445  3184  24D0  3183   	fcall	_MAX7219_Transfer
+  1877                           
+  1878                           ;main.c: 191: MAX7219_Transfer(0x02, 15);
+  1879  0448  300F               	movlw	15
+  1880  0449  00F6               	movwf	??_WarningFlash
+  1881  044A  0876               	movf	??_WarningFlash,w
+  1882  044B  00F3               	movwf	MAX7219_Transfer@value
+  1883  044C  3002               	movlw	2
+  1884  044D  3184  24D0  3183   	fcall	_MAX7219_Transfer
+  1885  0450  3001               	movlw	1
+  1886  0451  0020               	movlb	0	; select bank0
+  1887  0452  07A8               	addwf	WarningFlash@i_325,f
+  1888  0453  3000               	movlw	0
+  1889  0454  3DA9               	addwfc	WarningFlash@i_325+1,f
+  1890  0455  0829               	movf	WarningFlash@i_325+1,w
+  1891  0456  3A80               	xorlw	128
+  1892  0457  00F6               	movwf	??_WarningFlash
+  1893  0458  3080               	movlw	128
+  1894  0459  0276               	subwf	??_WarningFlash,w
+  1895  045A  1D03               	skipz
+  1896  045B  2C5E               	goto	u2785
+  1897  045C  3003               	movlw	3
+  1898  045D  0228               	subwf	WarningFlash@i_325,w
+  1899  045E                     u2785:	
+  1900  045E  1C03               	skipc
+  1901  045F  2C1A               	goto	l2285
+  1902  0460                     l2295:	
+  1903                           
+  1904                           ;main.c: 192: }
+  1905                           ;main.c: 193: Cold_Flag = 0;
+  1906  0460  0020               	movlb	0	; select bank0
+  1907  0461  01A0               	clrf	_Cold_Flag
+  1908  0462  01A1               	clrf	_Cold_Flag+1
+  1909  0463  0008               	return
+  1910  0464                     __end_of_WarningFlash:	
+  1911                           
+  1912                           	psect	text3
+  1913  04FA                     __ptext3:	
+  1914 ;; *************** function _Timer0_Init *****************
+  1915 ;; Defined at:
+  1916 ;;		line 136 in file "main.c"
+  1917 ;; Parameters:    Size  Location     Type
+  1918 ;;		None
+  1919 ;; Auto vars:     Size  Location     Type
+  1920 ;;		None
+  1921 ;; Return value:  Size  Location     Type
+  1922 ;;                  1    wreg      void 
+  1923 ;; Registers used:
+  1924 ;;		wreg
+  1925 ;; Tracked objects:
+  1926 ;;		On entry : 0/0
+  1927 ;;		On exit  : 0/0
+  1928 ;;		Unchanged: 0/0
+  1929 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
+  1930 ;;      Params:         0       0       0       0       0       0       0       0
+  1931 ;;      Locals:         0       0       0       0       0       0       0       0
+  1932 ;;      Temps:          0       0       0       0       0       0       0       0
+  1933 ;;      Totals:         0       0       0       0       0       0       0       0
+  1934 ;;Total ram usage:        0 bytes
+  1935 ;; Hardware stack levels used:    1
+  1936 ;; Hardware stack levels required when called:    1
+  1937 ;; This function calls:
+  1938 ;;		Nothing
+  1939 ;; This function is called by:
+  1940 ;;		_main
+  1941 ;; This function uses a non-reentrant model
+  1942 ;;
+  1943                           
+  1944                           
+  1945                           ;psect for function _Timer0_Init
+  1946  04FA                     _Timer0_Init:	
+  1947                           
+  1948                           ;main.c: 138: T0CON0 = 0b10000000;
+  1949                           
+  1950                           ;incstack = 0
+  1951                           ; Regs used in _Timer0_Init: [wreg]
+  1952  04FA  3080               	movlw	128
+  1953  04FB  0020               	movlb	0	; select bank0
+  1954  04FC  0097               	movwf	23	;volatile
+  1955                           
+  1956                           ;main.c: 139: T0CON1 = 0b01000110;
+  1957  04FD  3046               	movlw	70
+  1958  04FE  0098               	movwf	24	;volatile
+  1959                           
+  1960                           ;main.c: 140: PIE0 = 0b00100000;
+  1961  04FF  3020               	movlw	32
+  1962  0500  0021               	movlb	1	; select bank1
+  1963  0501  0090               	movwf	16	;volatile
+  1964                           
+  1965                           ;main.c: 141: INTCONbits.GIE = 1;
+  1966  0502  178B               	bsf	11,7	;volatile
+  1967                           
+  1968                           ;main.c: 142: TMR0Hbits.TMR0H = 157;
+  1969  0503  309D               	movlw	157
+  1970  0504  0020               	movlb	0	; select bank0
+  1971  0505  0096               	movwf	22	;volatile
+  1972  0506  0008               	return
+  1973  0507                     __end_of_Timer0_Init:	
+  1974                           
+  1975                           	psect	text4
+  1976  028B                     __ptext4:	
+  1977 ;; *************** function _TestDisplay *****************
+  1978 ;; Defined at:
+  1979 ;;		line 394 in file "main.c"
+  1980 ;; Parameters:    Size  Location     Type
+  1981 ;;		None
+  1982 ;; Auto vars:     Size  Location     Type
+  1983 ;;  i               2    2[BANK0 ] int 
+  1984 ;;  j               2    0[BANK0 ] int 
+  1985 ;; Return value:  Size  Location     Type
+  1986 ;;                  1    wreg      void 
+  1987 ;; Registers used:
+  1988 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+  1989 ;; Tracked objects:
+  1990 ;;		On entry : 0/0
+  1991 ;;		On exit  : 0/0
+  1992 ;;		Unchanged: 0/0
+  1993 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
+  1994 ;;      Params:         0       0       0       0       0       0       0       0
+  1995 ;;      Locals:         0       4       0       0       0       0       0       0
+  1996 ;;      Temps:          2       0       0       0       0       0       0       0
+  1997 ;;      Totals:         2       4       0       0       0       0       0       0
+  1998 ;;Total ram usage:        6 bytes
+  1999 ;; Hardware stack levels used:    1
+  2000 ;; Hardware stack levels required when called:    3
+  2001 ;; This function calls:
+  2002 ;;		_MAX7219_Transfer
+  2003 ;; This function is called by:
+  2004 ;;		_main
+  2005 ;; This function uses a non-reentrant model
+  2006 ;;
+  2007                           
+  2008                           
+  2009                           ;psect for function _TestDisplay
+  2010  028B                     _TestDisplay:	
+  2011                           
+  2012                           ;main.c: 396: int i = 0;
+  2013                           
+  2014                           ;incstack = 0
+  2015                           ; Regs used in _TestDisplay: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+  2016  028B  0020               	movlb	0	; select bank0
+  2017  028C  01A8               	clrf	TestDisplay@i
+  2018  028D  01A9               	clrf	TestDisplay@i+1
+  2019                           
+  2020                           ;main.c: 397: int j = 0;
+  2021  028E  01A6               	clrf	TestDisplay@j
+  2022  028F  01A7               	clrf	TestDisplay@j+1
+  2023                           
+  2024                           ;main.c: 399: _delay((unsigned long)((500)*(4000000/4000.0)));
+  2025  0290  3003               	movlw	3
+  2026  0291  00F7               	movwf	??_TestDisplay+1
+  2027  0292  308A               	movlw	138
+  2028  0293  00F6               	movwf	??_TestDisplay
+  2029  0294  3056               	movlw	86
+  2030  0295                     u4117:	
+  2031  0295  0B89               	decfsz	9,f
+  2032  0296  2A95               	goto	u4117
+  2033  0297  0BF6               	decfsz	??_TestDisplay,f
+  2034  0298  2A95               	goto	u4117
+  2035  0299  0BF7               	decfsz	??_TestDisplay+1,f
+  2036  029A  2A95               	goto	u4117
+  2037                           
+  2038                           ;main.c: 400: MAX7219_Transfer(0x01, 14);
+  2039  029B  300E               	movlw	14
+  2040  029C  00F6               	movwf	??_TestDisplay
+  2041  029D  0876               	movf	??_TestDisplay,w
+  2042  029E  00F3               	movwf	MAX7219_Transfer@value
+  2043  029F  3001               	movlw	1
+  2044  02A0  3184  24D0  3182   	fcall	_MAX7219_Transfer
+  2045                           
+  2046                           ;main.c: 401: MAX7219_Transfer(0x02, 14);
+  2047  02A3  300E               	movlw	14
+  2048  02A4  00F6               	movwf	??_TestDisplay
+  2049  02A5  0876               	movf	??_TestDisplay,w
+  2050  02A6  00F3               	movwf	MAX7219_Transfer@value
+  2051  02A7  3002               	movlw	2
+  2052  02A8  3184  24D0  3182   	fcall	_MAX7219_Transfer
+  2053                           
+  2054                           ;main.c: 402: _delay((unsigned long)((500)*(4000000/4000.0)));
+  2055  02AB  3003               	movlw	3
+  2056  02AC  00F7               	movwf	??_TestDisplay+1
+  2057  02AD  308A               	movlw	138
+  2058  02AE  00F6               	movwf	??_TestDisplay
+  2059  02AF  3056               	movlw	86
+  2060  02B0                     u4127:	
+  2061  02B0  0B89               	decfsz	9,f
+  2062  02B1  2AB0               	goto	u4127
+  2063  02B2  0BF6               	decfsz	??_TestDisplay,f
+  2064  02B3  2AB0               	goto	u4127
+  2065  02B4  0BF7               	decfsz	??_TestDisplay+1,f
+  2066  02B5  2AB0               	goto	u4127
+  2067                           
+  2068                           ;main.c: 405: for(i = 0; i < 10; i++)
+  2069  02B6  0020               	movlb	0	; select bank0
+  2070  02B7  01A8               	clrf	TestDisplay@i
+  2071  02B8  01A9               	clrf	TestDisplay@i+1
+  2072  02B9  0829               	movf	TestDisplay@i+1,w
+  2073  02BA  3A80               	xorlw	128
+  2074  02BB  00F6               	movwf	??_TestDisplay
+  2075  02BC  3080               	movlw	128
+  2076  02BD  0276               	subwf	??_TestDisplay,w
+  2077  02BE  1D03               	skipz
+  2078  02BF  2AC2               	goto	u2795
+  2079  02C0  300A               	movlw	10
+  2080  02C1  0228               	subwf	TestDisplay@i,w
+  2081  02C2                     u2795:	
+  2082  02C2  1803               	btfsc	3,0
+  2083  02C3  2B83               	goto	l2361
+  2084  02C4                     l2315:	
+  2085                           
+  2086                           ;main.c: 406: {
+  2087                           ;main.c: 407: MAX7219_Transfer(0x0A, 0x00);
+  2088  02C4  01F3               	clrf	MAX7219_Transfer@value
+  2089  02C5  300A               	movlw	10
+  2090  02C6  3184  24D0  3182   	fcall	_MAX7219_Transfer
+  2091                           
+  2092                           ;main.c: 408: switch(i)
+  2093  02C9  2B2B               	goto	l2341
+  2094  02CA                     l2317:	
+  2095                           ;main.c: 409: {
+  2096                           ;main.c: 410: case 0:
+  2097                           
+  2098                           
+  2099                           ;main.c: 411: MAX7219_Transfer(0x0A, 0x01);
+  2100  02CA  01F3               	clrf	MAX7219_Transfer@value
+  2101  02CB  0AF3               	incf	MAX7219_Transfer@value,f
+  2102  02CC  300A               	movlw	10
+  2103  02CD  3184  24D0  3182   	fcall	_MAX7219_Transfer
+  2104                           
+  2105                           ;main.c: 412: break;
+  2106  02D0  2B3B               	goto	l2343
+  2107  02D1                     l2319:	
+  2108                           ;main.c: 413: case 1:
+  2109                           
+  2110                           
+  2111                           ;main.c: 414: MAX7219_Transfer(0x0A, 0x03);
+  2112  02D1  3003               	movlw	3
+  2113  02D2  00F6               	movwf	??_TestDisplay
+  2114  02D3  0876               	movf	??_TestDisplay,w
+  2115  02D4  00F3               	movwf	MAX7219_Transfer@value
+  2116  02D5  300A               	movlw	10
+  2117  02D6  3184  24D0  3182   	fcall	_MAX7219_Transfer
+  2118                           
+  2119                           ;main.c: 415: break;
+  2120  02D9  2B3B               	goto	l2343
+  2121  02DA                     l2321:	
+  2122                           ;main.c: 416: case 2:
+  2123                           
+  2124                           
+  2125                           ;main.c: 417: MAX7219_Transfer(0x0A, 0x05);
+  2126  02DA  3005               	movlw	5
+  2127  02DB  00F6               	movwf	??_TestDisplay
+  2128  02DC  0876               	movf	??_TestDisplay,w
+  2129  02DD  00F3               	movwf	MAX7219_Transfer@value
+  2130  02DE  300A               	movlw	10
+  2131  02DF  3184  24D0  3182   	fcall	_MAX7219_Transfer
+  2132                           
+  2133                           ;main.c: 418: break;
+  2134  02E2  2B3B               	goto	l2343
+  2135  02E3                     l2323:	
+  2136                           ;main.c: 419: case 3:
+  2137                           
+  2138                           
+  2139                           ;main.c: 420: MAX7219_Transfer(0x0A, 0x07);
+  2140  02E3  3007               	movlw	7
+  2141  02E4  00F6               	movwf	??_TestDisplay
+  2142  02E5  0876               	movf	??_TestDisplay,w
+  2143  02E6  00F3               	movwf	MAX7219_Transfer@value
+  2144  02E7  300A               	movlw	10
+  2145  02E8  3184  24D0  3182   	fcall	_MAX7219_Transfer
+  2146                           
+  2147                           ;main.c: 421: break;
+  2148  02EB  2B3B               	goto	l2343
+  2149  02EC                     l2325:	
+  2150                           ;main.c: 422: case 4:
+  2151                           
+  2152                           
+  2153                           ;main.c: 423: MAX7219_Transfer(0x0A, 0x09);
+  2154  02EC  3009               	movlw	9
+  2155  02ED  00F6               	movwf	??_TestDisplay
+  2156  02EE  0876               	movf	??_TestDisplay,w
+  2157  02EF  00F3               	movwf	MAX7219_Transfer@value
+  2158  02F0  300A               	movlw	10
+  2159  02F1  3184  24D0  3182   	fcall	_MAX7219_Transfer
+  2160                           
+  2161                           ;main.c: 424: break;
+  2162  02F4  2B3B               	goto	l2343
+  2163  02F5                     l2327:	
+  2164                           ;main.c: 425: case 5:
+  2165                           
+  2166                           
+  2167                           ;main.c: 426: MAX7219_Transfer(0x0A, 0x0B);
+  2168  02F5  300B               	movlw	11
+  2169  02F6  00F6               	movwf	??_TestDisplay
+  2170  02F7  0876               	movf	??_TestDisplay,w
+  2171  02F8  00F3               	movwf	MAX7219_Transfer@value
+  2172  02F9  300A               	movlw	10
+  2173  02FA  3184  24D0  3182   	fcall	_MAX7219_Transfer
+  2174                           
+  2175                           ;main.c: 427: break;
+  2176  02FD  2B3B               	goto	l2343
+  2177  02FE                     l2329:	
+  2178                           ;main.c: 428: case 6:
+  2179                           
+  2180                           
+  2181                           ;main.c: 429: MAX7219_Transfer(0x0A, 0x0C);
+  2182  02FE  300C               	movlw	12
+  2183  02FF  00F6               	movwf	??_TestDisplay
+  2184  0300  0876               	movf	??_TestDisplay,w
+  2185  0301  00F3               	movwf	MAX7219_Transfer@value
+  2186  0302  300A               	movlw	10
+  2187  0303  3184  24D0  3182   	fcall	_MAX7219_Transfer
+  2188                           
+  2189                           ;main.c: 430: break;
+  2190  0306  2B3B               	goto	l2343
+  2191  0307                     l2331:	
+  2192                           ;main.c: 431: case 7:
+  2193                           
+  2194                           
+  2195                           ;main.c: 432: MAX7219_Transfer(0x0A, 0x0D);
+  2196  0307  300D               	movlw	13
+  2197  0308  00F6               	movwf	??_TestDisplay
+  2198  0309  0876               	movf	??_TestDisplay,w
+  2199  030A  00F3               	movwf	MAX7219_Transfer@value
+  2200  030B  300A               	movlw	10
+  2201  030C  3184  24D0  3182   	fcall	_MAX7219_Transfer
+  2202                           
+  2203                           ;main.c: 433: break;
+  2204  030F  2B3B               	goto	l2343
+  2205  0310                     l2333:	
+  2206                           ;main.c: 434: case 8:
+  2207                           
+  2208                           
+  2209                           ;main.c: 435: MAX7219_Transfer(0x0A, 0x0E);
+  2210  0310  300E               	movlw	14
+  2211  0311  00F6               	movwf	??_TestDisplay
+  2212  0312  0876               	movf	??_TestDisplay,w
+  2213  0313  00F3               	movwf	MAX7219_Transfer@value
+  2214  0314  300A               	movlw	10
+  2215  0315  3184  24D0  3182   	fcall	_MAX7219_Transfer
+  2216                           
+  2217                           ;main.c: 436: break;
+  2218  0318  2B3B               	goto	l2343
+  2219  0319                     l2335:	
+  2220                           ;main.c: 437: case 9:
+  2221                           
+  2222                           
+  2223                           ;main.c: 438: MAX7219_Transfer(0x0A, 0x0F);
+  2224  0319  300F               	movlw	15
+  2225  031A  00F6               	movwf	??_TestDisplay
+  2226  031B  0876               	movf	??_TestDisplay,w
+  2227  031C  00F3               	movwf	MAX7219_Transfer@value
+  2228  031D  300A               	movlw	10
+  2229  031E  3184  24D0  3182   	fcall	_MAX7219_Transfer
+  2230                           
+  2231                           ;main.c: 439: break;
+  2232  0321  2B3B               	goto	l2343
+  2233  0322                     l2337:	
+  2234                           ;main.c: 440: default:
+  2235                           
+  2236                           
+  2237                           ;main.c: 441: MAX7219_Transfer(0x0A, 0x0F);
+  2238  0322  300F               	movlw	15
+  2239  0323  00F6               	movwf	??_TestDisplay
+  2240  0324  0876               	movf	??_TestDisplay,w
+  2241  0325  00F3               	movwf	MAX7219_Transfer@value
+  2242  0326  300A               	movlw	10
+  2243  0327  3184  24D0  3182   	fcall	_MAX7219_Transfer
+  2244                           
+  2245                           ;main.c: 443: }
+  2246                           
+  2247                           ;main.c: 442: break;
+  2248  032A  2B3B               	goto	l2343
+  2249  032B                     l2341:	
+  2250                           
+  2251                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+      +                          itches
+  2252                           ; Switch size 1, requested type "space"
+  2253                           ; Number of cases is 1, Range of values is 0 to 0
+  2254                           ; switch strategies available:
+  2255                           ; Name         Instructions Cycles
+  2256                           ; simple_byte            4     3 (average)
+  2257                           ; direct_byte            8     6 (fixed)
+  2258                           ; jumptable            260     6 (fixed)
+  2259                           ;	Chosen strategy is simple_byte
+  2260  032B  0020               	movlb	0	; select bank0
+  2261  032C  0829               	movf	TestDisplay@i+1,w
+  2262  032D  3A00               	xorlw	0	; case 0
+  2263  032E  1903               	skipnz
+  2264  032F  2B31               	goto	l2941
+  2265  0330  2B22               	goto	l2337
+  2266  0331                     l2941:	
+  2267                           
+  2268                           ; Switch size 1, requested type "space"
+  2269                           ; Number of cases is 10, Range of values is 0 to 9
+  2270                           ; switch strategies available:
+  2271                           ; Name         Instructions Cycles
+  2272                           ; direct_byte           26     6 (fixed)
+  2273                           ; simple_byte           31    16 (average)
+  2274                           ; jumptable            260     6 (fixed)
+  2275                           ;	Chosen strategy is direct_byte
+  2276  0331  0828               	movf	TestDisplay@i,w
+  2277  0332  0084               	movwf	4
+  2278  0333  300A               	movlw	10
+  2279  0334  0204               	subwf	4,w
+  2280  0335  1803               	skipnc
+  2281  0336  2B22               	goto	l2337
+  2282  0337  3184               	movlp	high S2943
+  2283  0338  3504               	lslf	4,w
+  2284  0339  3EE6               	addlw	low S2943
+  2285  033A  0082               	movwf	2
+  2286  033B                     l2343:	
+  2287                           
+  2288                           ;main.c: 445: MAX7219_Transfer(0x01, i);
+  2289  033B  0020               	movlb	0	; select bank0
+  2290  033C  0828               	movf	TestDisplay@i,w
+  2291  033D  00F6               	movwf	??_TestDisplay
+  2292  033E  0876               	movf	??_TestDisplay,w
+  2293  033F  00F3               	movwf	MAX7219_Transfer@value
+  2294  0340  3001               	movlw	1
+  2295  0341  3184  24D0  3182   	fcall	_MAX7219_Transfer
+  2296                           
+  2297                           ;main.c: 446: for(j = 0; j < 10; j++)
+  2298  0344  0020               	movlb	0	; select bank0
+  2299  0345  01A6               	clrf	TestDisplay@j
+  2300  0346  01A7               	clrf	TestDisplay@j+1
+  2301  0347  0827               	movf	TestDisplay@j+1,w
+  2302  0348  3A80               	xorlw	128
+  2303  0349  00F6               	movwf	??_TestDisplay
+  2304  034A  3080               	movlw	128
+  2305  034B  0276               	subwf	??_TestDisplay,w
+  2306  034C  1D03               	skipz
+  2307  034D  2B50               	goto	u2805
+  2308  034E  300A               	movlw	10
+  2309  034F  0226               	subwf	TestDisplay@j,w
+  2310  0350                     u2805:	
+  2311  0350  1803               	btfsc	3,0
+  2312  0351  2B73               	goto	l2359
+  2313  0352                     l2351:	
+  2314                           
+  2315                           ;main.c: 447: {
+  2316                           ;main.c: 448: _delay((unsigned long)((25)*(4000000/4000.0)));
+  2317  0352  3021               	movlw	33
+  2318  0353  00F6               	movwf	??_TestDisplay
+  2319  0354  3076               	movlw	118
+  2320  0355                     u4137:	
+  2321  0355  0B89               	decfsz	9,f
+  2322  0356  2B55               	goto	u4137
+  2323  0357  0BF6               	decfsz	??_TestDisplay,f
+  2324  0358  2B55               	goto	u4137
+  2325  0359  3200               	nop2
+  2326                           
+  2327                           ;main.c: 449: MAX7219_Transfer(0x02, j);
+  2328  035A  0020               	movlb	0	; select bank0
+  2329  035B  0826               	movf	TestDisplay@j,w
+  2330  035C  00F6               	movwf	??_TestDisplay
+  2331  035D  0876               	movf	??_TestDisplay,w
+  2332  035E  00F3               	movwf	MAX7219_Transfer@value
+  2333  035F  3002               	movlw	2
+  2334  0360  3184  24D0  3182   	fcall	_MAX7219_Transfer
+  2335  0363  3001               	movlw	1
+  2336  0364  0020               	movlb	0	; select bank0
+  2337  0365  07A6               	addwf	TestDisplay@j,f
+  2338  0366  3000               	movlw	0
+  2339  0367  3DA7               	addwfc	TestDisplay@j+1,f
+  2340  0368  0827               	movf	TestDisplay@j+1,w
+  2341  0369  3A80               	xorlw	128
+  2342  036A  00F6               	movwf	??_TestDisplay
+  2343  036B  3080               	movlw	128
+  2344  036C  0276               	subwf	??_TestDisplay,w
+  2345  036D  1D03               	skipz
+  2346  036E  2B71               	goto	u2815
+  2347  036F  300A               	movlw	10
+  2348  0370  0226               	subwf	TestDisplay@j,w
+  2349  0371                     u2815:	
+  2350  0371  1C03               	skipc
+  2351  0372  2B52               	goto	l2351
+  2352  0373                     l2359:	
+  2353  0373  3001               	movlw	1
+  2354  0374  0020               	movlb	0	; select bank0
+  2355  0375  07A8               	addwf	TestDisplay@i,f
+  2356  0376  3000               	movlw	0
+  2357  0377  3DA9               	addwfc	TestDisplay@i+1,f
+  2358  0378  0829               	movf	TestDisplay@i+1,w
+  2359  0379  3A80               	xorlw	128
+  2360  037A  00F6               	movwf	??_TestDisplay
+  2361  037B  3080               	movlw	128
+  2362  037C  0276               	subwf	??_TestDisplay,w
+  2363  037D  1D03               	skipz
+  2364  037E  2B81               	goto	u2825
+  2365  037F  300A               	movlw	10
+  2366  0380  0228               	subwf	TestDisplay@i,w
+  2367  0381                     u2825:	
+  2368  0381  1C03               	skipc
+  2369  0382  2AC4               	goto	l2315
+  2370  0383                     l2361:	
+  2371                           
+  2372                           ;main.c: 450: }
+  2373                           ;main.c: 451: }
+  2374                           ;main.c: 453: _delay((unsigned long)((500)*(4000000/4000.0)));
+  2375  0383  3003               	movlw	3
+  2376  0384  00F7               	movwf	??_TestDisplay+1
+  2377  0385  308A               	movlw	138
+  2378  0386  00F6               	movwf	??_TestDisplay
+  2379  0387  3056               	movlw	86
+  2380  0388                     u4147:	
+  2381  0388  0B89               	decfsz	9,f
+  2382  0389  2B88               	goto	u4147
+  2383  038A  0BF6               	decfsz	??_TestDisplay,f
+  2384  038B  2B88               	goto	u4147
+  2385  038C  0BF7               	decfsz	??_TestDisplay+1,f
+  2386  038D  2B88               	goto	u4147
+  2387                           
+  2388                           ;main.c: 454: MAX7219_Transfer(0x01, 10);
+  2389  038E  300A               	movlw	10
+  2390  038F  00F6               	movwf	??_TestDisplay
+  2391  0390  0876               	movf	??_TestDisplay,w
+  2392  0391  00F3               	movwf	MAX7219_Transfer@value
+  2393  0392  3001               	movlw	1
+  2394  0393  3184  24D0  3182   	fcall	_MAX7219_Transfer
+  2395                           
+  2396                           ;main.c: 455: MAX7219_Transfer(0x02, 10);
+  2397  0396  300A               	movlw	10
+  2398  0397  00F6               	movwf	??_TestDisplay
+  2399  0398  0876               	movf	??_TestDisplay,w
+  2400  0399  00F3               	movwf	MAX7219_Transfer@value
+  2401  039A  3002               	movlw	2
+  2402  039B  3184  24D0  3182   	fcall	_MAX7219_Transfer
+  2403                           
+  2404                           ;main.c: 456: _delay((unsigned long)((500)*(4000000/4000.0)));
+  2405  039E  3003               	movlw	3
+  2406  039F  00F7               	movwf	??_TestDisplay+1
+  2407  03A0  308A               	movlw	138
+  2408  03A1  00F6               	movwf	??_TestDisplay
+  2409  03A2  3056               	movlw	86
+  2410  03A3                     u4157:	
+  2411  03A3  0B89               	decfsz	9,f
+  2412  03A4  2BA3               	goto	u4157
+  2413  03A5  0BF6               	decfsz	??_TestDisplay,f
+  2414  03A6  2BA3               	goto	u4157
+  2415  03A7  0BF7               	decfsz	??_TestDisplay+1,f
+  2416  03A8  2BA3               	goto	u4157
+  2417                           
+  2418                           ;main.c: 458: MAX7219_Transfer(0x00, 0x00);
+  2419  03A9  01F3               	clrf	MAX7219_Transfer@value
+  2420  03AA  3000               	movlw	0
+  2421  03AB  3184  24D0         	fcall	_MAX7219_Transfer
+  2422  03AD  0008               	return
+  2423  03AE                     __end_of_TestDisplay:	
+  2424                           
+  2425                           	psect	swtext1
+  2426  04E6                     __pswtext1:	
+  2427  04E6                     S2943:	
+  2428  04E6  3182  2ACA         	ljmp	l2317
+  2429  04E8  3182  2AD1         	ljmp	l2319
+  2430  04EA  3182  2ADA         	ljmp	l2321
+  2431  04EC  3182  2AE3         	ljmp	l2323
+  2432  04EE  3182  2AEC         	ljmp	l2325
+  2433  04F0  3182  2AF5         	ljmp	l2327
+  2434  04F2  3182  2AFE         	ljmp	l2329
+  2435  04F4  3183  2B07         	ljmp	l2331
+  2436  04F6  3183  2B10         	ljmp	l2333
+  2437  04F8  3183  2B19         	ljmp	l2335
+  2438                           
+  2439                           	psect	text5
+  2440  049D                     __ptext5:	
+  2441 ;; *************** function _MAX7219_Init *****************
+  2442 ;; Defined at:
+  2443 ;;		line 122 in file "main.c"
+  2444 ;; Parameters:    Size  Location     Type
+  2445 ;;		None
+  2446 ;; Auto vars:     Size  Location     Type
+  2447 ;;		None
+  2448 ;; Return value:  Size  Location     Type
+  2449 ;;                  1    wreg      void 
+  2450 ;; Registers used:
+  2451 ;;		wreg, status,2, status,0, pclath, cstack
+  2452 ;; Tracked objects:
+  2453 ;;		On entry : 0/0
+  2454 ;;		On exit  : 0/0
+  2455 ;;		Unchanged: 0/0
+  2456 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
+  2457 ;;      Params:         0       0       0       0       0       0       0       0
+  2458 ;;      Locals:         0       0       0       0       0       0       0       0
+  2459 ;;      Temps:          1       0       0       0       0       0       0       0
+  2460 ;;      Totals:         1       0       0       0       0       0       0       0
+  2461 ;;Total ram usage:        1 bytes
+  2462 ;; Hardware stack levels used:    1
+  2463 ;; Hardware stack levels required when called:    3
+  2464 ;; This function calls:
+  2465 ;;		_MAX7219_Transfer
+  2466 ;; This function is called by:
+  2467 ;;		_main
+  2468 ;; This function uses a non-reentrant model
+  2469 ;;
+  2470                           
+  2471                           
+  2472                           ;psect for function _MAX7219_Init
+  2473  049D                     _MAX7219_Init:	
+  2474                           
+  2475                           ;main.c: 125: PORTCbits.RC3 = 0;
+  2476                           
+  2477                           ;incstack = 0
+  2478                           ; Regs used in _MAX7219_Init: [wreg+status,2+status,0+pclath+cstack]
+  2479  049D  0020               	movlb	0	; select bank0
+  2480  049E  118E               	bcf	14,3	;volatile
+  2481                           
+  2482                           ;main.c: 126: MAX7219_Transfer(0x00, 0x00);
+  2483  049F  01F3               	clrf	MAX7219_Transfer@value
+  2484  04A0  3000               	movlw	0
+  2485  04A1  3184  24D0  3184   	fcall	_MAX7219_Transfer
+  2486                           
+  2487                           ;main.c: 127: MAX7219_Transfer(0x0F, 0x01);
+  2488  04A4  01F3               	clrf	MAX7219_Transfer@value
+  2489  04A5  0AF3               	incf	MAX7219_Transfer@value,f
+  2490  04A6  300F               	movlw	15
+  2491  04A7  3184  24D0  3184   	fcall	_MAX7219_Transfer
+  2492                           
+  2493                           ;main.c: 128: MAX7219_Transfer(0x0F, 0x00);
+  2494  04AA  01F3               	clrf	MAX7219_Transfer@value
+  2495  04AB  300F               	movlw	15
+  2496  04AC  3184  24D0  3184   	fcall	_MAX7219_Transfer
+  2497                           
+  2498                           ;main.c: 129: MAX7219_Transfer(0x09, 0x0F);
+  2499  04AF  300F               	movlw	15
+  2500  04B0  00F6               	movwf	??_MAX7219_Init
+  2501  04B1  0876               	movf	??_MAX7219_Init,w
+  2502  04B2  00F3               	movwf	MAX7219_Transfer@value
+  2503  04B3  3009               	movlw	9
+  2504  04B4  3184  24D0  3184   	fcall	_MAX7219_Transfer
+  2505                           
+  2506                           ;main.c: 130: MAX7219_Transfer(0x0A, 0x0F);
+  2507  04B7  300F               	movlw	15
+  2508  04B8  00F6               	movwf	??_MAX7219_Init
+  2509  04B9  0876               	movf	??_MAX7219_Init,w
+  2510  04BA  00F3               	movwf	MAX7219_Transfer@value
+  2511  04BB  300A               	movlw	10
+  2512  04BC  3184  24D0  3184   	fcall	_MAX7219_Transfer
+  2513                           
+  2514                           ;main.c: 131: MAX7219_Transfer(0x0B, 0x01);
+  2515  04BF  01F3               	clrf	MAX7219_Transfer@value
+  2516  04C0  0AF3               	incf	MAX7219_Transfer@value,f
+  2517  04C1  300B               	movlw	11
+  2518  04C2  3184  24D0  3184   	fcall	_MAX7219_Transfer
+  2519                           
+  2520                           ;main.c: 132: MAX7219_Transfer(0x0C, 0x01);
+  2521  04C5  01F3               	clrf	MAX7219_Transfer@value
+  2522  04C6  0AF3               	incf	MAX7219_Transfer@value,f
+  2523  04C7  300C               	movlw	12
+  2524  04C8  3184  24D0  3184   	fcall	_MAX7219_Transfer
+  2525                           
+  2526                           ;main.c: 133: MAX7219_Transfer(0x00, 0x00);
+  2527  04CB  01F3               	clrf	MAX7219_Transfer@value
+  2528  04CC  3000               	movlw	0
+  2529  04CD  3184  24D0         	fcall	_MAX7219_Transfer
+  2530  04CF  0008               	return
+  2531  04D0                     __end_of_MAX7219_Init:	
+  2532                           
+  2533                           	psect	text6
+  2534  04D0                     __ptext6:	
+  2535 ;; *************** function _MAX7219_Transfer *****************
+  2536 ;; Defined at:
+  2537 ;;		line 145 in file "main.c"
+  2538 ;; Parameters:    Size  Location     Type
+  2539 ;;  address         1    wreg     unsigned char 
+  2540 ;;  value           1    3[COMMON] unsigned char 
+  2541 ;; Auto vars:     Size  Location     Type
+  2542 ;;  address         1    5[COMMON] unsigned char 
+  2543 ;; Return value:  Size  Location     Type
+  2544 ;;                  1    wreg      void 
+  2545 ;; Registers used:
+  2546 ;;		wreg, status,2, status,0, pclath, cstack
+  2547 ;; Tracked objects:
+  2548 ;;		On entry : 0/0
+  2549 ;;		On exit  : 0/0
+  2550 ;;		Unchanged: 0/0
+  2551 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
+  2552 ;;      Params:         1       0       0       0       0       0       0       0
+  2553 ;;      Locals:         1       0       0       0       0       0       0       0
+  2554 ;;      Temps:          1       0       0       0       0       0       0       0
+  2555 ;;      Totals:         3       0       0       0       0       0       0       0
+  2556 ;;Total ram usage:        3 bytes
+  2557 ;; Hardware stack levels used:    1
+  2558 ;; Hardware stack levels required when called:    2
+  2559 ;; This function calls:
+  2560 ;;		_SPI_SHIFT_8
+  2561 ;; This function is called by:
+  2562 ;;		_main
+  2563 ;;		_MAX7219_Init
+  2564 ;;		_WarningFlash
+  2565 ;;		_UpdateDisplay
+  2566 ;;		_TestDisplay
+  2567 ;; This function uses a non-reentrant model
+  2568 ;;
+  2569                           
+  2570                           
+  2571                           ;psect for function _MAX7219_Transfer
+  2572  04D0                     _MAX7219_Transfer:	
+  2573                           
+  2574                           ;incstack = 0
+  2575                           ; Regs used in _MAX7219_Transfer: [wreg+status,2+status,0+pclath+cstack]
+  2576                           ;MAX7219_Transfer@address stored from wreg
+  2577  04D0  00F5               	movwf	MAX7219_Transfer@address
+  2578                           
+  2579                           ;main.c: 147: SPI_SHIFT_8(address);
+  2580  04D1  0875               	movf	MAX7219_Transfer@address,w
+  2581  04D2  3185  2514  3184   	fcall	_SPI_SHIFT_8
+  2582                           
+  2583                           ;main.c: 148: SPI_SHIFT_8(value);
+  2584  04D5  0873               	movf	MAX7219_Transfer@value,w
+  2585  04D6  3185  2514  3184   	fcall	_SPI_SHIFT_8
+  2586                           
+  2587                           ;main.c: 149: PORTCbits.RC3 = 0;
+  2588  04D9  0020               	movlb	0	; select bank0
+  2589  04DA  118E               	bcf	14,3	;volatile
+  2590                           
+  2591                           ;main.c: 150: _delay((unsigned long)((5)*(4000000/4000.0)));
+  2592  04DB  3007               	movlw	7
+  2593  04DC  00F4               	movwf	??_MAX7219_Transfer
+  2594  04DD  307D               	movlw	125
+  2595  04DE                     u4167:	
+  2596  04DE  0B89               	decfsz	9,f
+  2597  04DF  2CDE               	goto	u4167
+  2598  04E0  0BF4               	decfsz	??_MAX7219_Transfer,f
+  2599  04E1  2CDE               	goto	u4167
+  2600  04E2  0000               	nop
+  2601                           
+  2602                           ;main.c: 151: PORTCbits.RC3 = 1;
+  2603  04E3  0020               	movlb	0	; select bank0
+  2604  04E4  158E               	bsf	14,3	;volatile
+  2605  04E5  0008               	return
+  2606  04E6                     __end_of_MAX7219_Transfer:	
+  2607                           
+  2608                           	psect	text7
+  2609  0514                     __ptext7:	
+  2610 ;; *************** function _SPI_SHIFT_8 *****************
+  2611 ;; Defined at:
+  2612 ;;		line 461 in file "main.c"
+  2613 ;; Parameters:    Size  Location     Type
+  2614 ;;  data            1    wreg     unsigned char 
+  2615 ;; Auto vars:     Size  Location     Type
+  2616 ;;  data            1    2[COMMON] unsigned char 
+  2617 ;; Return value:  Size  Location     Type
+  2618 ;;                  1    wreg      unsigned char 
+  2619 ;; Registers used:
+  2620 ;;		wreg
+  2621 ;; Tracked objects:
+  2622 ;;		On entry : 0/0
+  2623 ;;		On exit  : 0/0
+  2624 ;;		Unchanged: 0/0
+  2625 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
+  2626 ;;      Params:         0       0       0       0       0       0       0       0
+  2627 ;;      Locals:         1       0       0       0       0       0       0       0
+  2628 ;;      Temps:          0       0       0       0       0       0       0       0
+  2629 ;;      Totals:         1       0       0       0       0       0       0       0
+  2630 ;;Total ram usage:        1 bytes
+  2631 ;; Hardware stack levels used:    1
+  2632 ;; Hardware stack levels required when called:    1
+  2633 ;; This function calls:
+  2634 ;;		Nothing
+  2635 ;; This function is called by:
+  2636 ;;		_MAX7219_Transfer
+  2637 ;; This function uses a non-reentrant model
+  2638 ;;
+  2639                           
+  2640                           
+  2641                           ;psect for function _SPI_SHIFT_8
+  2642  0514                     _SPI_SHIFT_8:	
+  2643                           
+  2644                           ;incstack = 0
+  2645                           ; Regs used in _SPI_SHIFT_8: [wreg]
+  2646                           ;SPI_SHIFT_8@data stored from wreg
+  2647  0514  00F2               	movwf	SPI_SHIFT_8@data
+  2648                           
+  2649                           ;main.c: 463: SSP1CONbits.WCOL = 0;
+  2650  0515  0024               	movlb	4	; select bank4
+  2651  0516  1395               	bcf	21,7	;volatile
+  2652                           
+  2653                           ;main.c: 464: SSP1BUF = data;
+  2654  0517  0872               	movf	SPI_SHIFT_8@data,w
+  2655  0518  0091               	movwf	17	;volatile
+  2656  0519                     l360:	
+  2657                           ;main.c: 465: while(SSP1STATbits.BF == 0){}
+  2658                           
+  2659  0519  1C14               	btfss	20,0	;volatile
+  2660  051A  2D19               	goto	l360
+  2661                           
+  2662                           ;main.c: 466: return (SSP1BUF);
+  2663                           ;	Return value of _SPI_SHIFT_8 is never used
+  2664  051B  0811               	movf	17,w	;volatile
+  2665  051C  0008               	return
+  2666  051D                     __end_of_SPI_SHIFT_8:	
+  2667                           
+  2668                           	psect	text8
+  2669  0507                     __ptext8:	
+  2670 ;; *************** function _ADC_Init *****************
+  2671 ;; Defined at:
+  2672 ;;		line 112 in file "main.c"
+  2673 ;; Parameters:    Size  Location     Type
+  2674 ;;		None
+  2675 ;; Auto vars:     Size  Location     Type
+  2676 ;;		None
+  2677 ;; Return value:  Size  Location     Type
+  2678 ;;                  1    wreg      void 
+  2679 ;; Registers used:
+  2680 ;;		wreg
+  2681 ;; Tracked objects:
+  2682 ;;		On entry : 0/0
+  2683 ;;		On exit  : 0/0
+  2684 ;;		Unchanged: 0/0
+  2685 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
+  2686 ;;      Params:         0       0       0       0       0       0       0       0
+  2687 ;;      Locals:         0       0       0       0       0       0       0       0
+  2688 ;;      Temps:          0       0       0       0       0       0       0       0
+  2689 ;;      Totals:         0       0       0       0       0       0       0       0
+  2690 ;;Total ram usage:        0 bytes
+  2691 ;; Hardware stack levels used:    1
+  2692 ;; Hardware stack levels required when called:    1
+  2693 ;; This function calls:
+  2694 ;;		Nothing
+  2695 ;; This function is called by:
+  2696 ;;		_main
+  2697 ;; This function uses a non-reentrant model
+  2698 ;;
+  2699                           
+  2700                           
+  2701                           ;psect for function _ADC_Init
+  2702  0507                     _ADC_Init:	
+  2703                           
+  2704                           ;main.c: 115: TRISCbits.TRISC2 = 1;
+  2705                           
+  2706                           ;incstack = 0
+  2707                           ; Regs used in _ADC_Init: [wreg]
+  2708  0507  0021               	movlb	1	; select bank1
+  2709  0508  150E               	bsf	14,2	;volatile
+  2710                           
+  2711                           ;main.c: 116: ANSELCbits.ANSC2 = 1;
+  2712  0509  0023               	movlb	3	; select bank3
+  2713  050A  150E               	bsf	14,2	;volatile
+  2714                           
+  2715                           ;main.c: 117: ADCON0 = 0b01001001;
+  2716  050B  3049               	movlw	73
+  2717  050C  0021               	movlb	1	; select bank1
+  2718  050D  009D               	movwf	29	;volatile
+  2719                           
+  2720                           ;main.c: 118: ADCON1 = 0b01000011;
+  2721  050E  3043               	movlw	67
+  2722  050F  009E               	movwf	30	;volatile
+  2723                           
+  2724                           ;main.c: 119: FVRCON = 0b11000010;
+  2725  0510  30C2               	movlw	194
+  2726  0511  0022               	movlb	2	; select bank2
+  2727  0512  0097               	movwf	23	;volatile
+  2728  0513  0008               	return
+  2729  0514                     __end_of_ADC_Init:	
+  2730                           
+  2731                           	psect	intentry
+  2732  0004                     __pintentry:	
+  2733 ;; *************** function _my_isr *****************
+  2734 ;; Defined at:
+  2735 ;;		line 154 in file "main.c"
+  2736 ;; Parameters:    Size  Location     Type
+  2737 ;;		None
+  2738 ;; Auto vars:     Size  Location     Type
+  2739 ;;		None
+  2740 ;; Return value:  Size  Location     Type
+  2741 ;;                  1    wreg      void 
+  2742 ;; Registers used:
+  2743 ;;		wreg
+  2744 ;; Tracked objects:
+  2745 ;;		On entry : 0/0
+  2746 ;;		On exit  : 0/0
+  2747 ;;		Unchanged: 0/0
+  2748 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
+  2749 ;;      Params:         0       0       0       0       0       0       0       0
+  2750 ;;      Locals:         0       0       0       0       0       0       0       0
+  2751 ;;      Temps:          2       0       0       0       0       0       0       0
+  2752 ;;      Totals:         2       0       0       0       0       0       0       0
+  2753 ;;Total ram usage:        2 bytes
+  2754 ;; Hardware stack levels used:    1
+  2755 ;; This function calls:
+  2756 ;;		Nothing
+  2757 ;; This function is called by:
+  2758 ;;		Interrupt level 1
+  2759 ;; This function uses a non-reentrant model
+  2760 ;;
+  2761                           
+  2762  0004                     _my_isr:	
+  2763                           
+  2764                           ;incstack = 0
+  2765  0004  147E               	bsf	126,0	;set compiler interrupt flag (level 1)
+  2766                           
+  2767                           ; Regs used in _my_isr: [wreg]
+  2768  0005  3180               	pagesel	$
+  2769  0006  0020               	movlb	0	; select bank0
+  2770  0007  087F               	movf	127,w
+  2771  0008  00F1               	movwf	??_my_isr+1
+  2772                           
+  2773                           ;main.c: 156: if(TMR0IF && TMR0IE)
+  2774  0009  1E90               	btfss	16,5	;volatile
+  2775  000A  2818               	goto	i1l103
+  2776  000B  0021               	movlb	1	; select bank1
+  2777  000C  1E90               	btfss	16,5	;volatile
+  2778  000D  2818               	goto	i1l103
+  2779  000E                     i1l100:	
+  2780                           ;main.c: 157: {
+  2781                           ;main.c: 158: while(ADCON0bits.ADGO == 1){}
+  2782                           
+  2783  000E  189D               	btfsc	29,1	;volatile
+  2784  000F  280E               	goto	i1l100
+  2785                           
+  2786                           ;main.c: 159: ADC_H = ADRESH;
+  2787  0010  081C               	movf	28,w	;volatile
+  2788  0011  00F0               	movwf	??_my_isr
+  2789  0012  0870               	movf	??_my_isr,w
+  2790  0013  00FA               	movwf	_ADC_H
+  2791                           
+  2792                           ;main.c: 161: TMR0IF = 0;
+  2793  0014  0020               	movlb	0	; select bank0
+  2794  0015  1290               	bcf	16,5	;volatile
+  2795                           
+  2796                           ;main.c: 162: ADCON0bits.ADGO = 1;
+  2797  0016  0021               	movlb	1	; select bank1
+  2798  0017  149D               	bsf	29,1	;volatile
+  2799  0018                     i1l103:	
+  2800  0018  0871               	movf	??_my_isr+1,w
+  2801  0019  0020               	movlb	0	; select bank0
+  2802  001A  00FF               	movwf	127
+  2803  001B  107E               	bcf	126,0	;clear compiler interrupt flag (level 1)
+  2804  001C  0009               	retfie
+  2805  001D                     __end_of_my_isr:	
+  2806  007E                     btemp	set	126	;btemp
+  2807  007E                     int$flags	set	126
+  2808  007E                     wtemp0	set	126
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         7
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14     10      11
+    BANK0            80      4      10
+    BANK1            80      0       0
+    BANK2            80      0       0
+    BANK3            80      0       0
+    BANK4            80      0       0
+    BANK5            80      0       0
+    BANK6            16      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    _main->_UpdateDisplay
+    _UpdateDisplay->_WarningFlash
+    _WarningFlash->_MAX7219_Transfer
+    _TestDisplay->_MAX7219_Transfer
+    _MAX7219_Init->_MAX7219_Transfer
+    _MAX7219_Transfer->_SPI_SHIFT_8
+
+Critical Paths under _my_isr in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    _main->_TestDisplay
+    _UpdateDisplay->_WarningFlash
+
+Critical Paths under _my_isr in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _my_isr in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _my_isr in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _my_isr in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _my_isr in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _my_isr in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _my_isr in BANK6
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 1     1      0   52511
+                                              9 COMMON     1     1      0
+                           _ADC_Init
+                       _MAX7219_Init
+                   _MAX7219_Transfer
+                        _TestDisplay
+                        _Timer0_Init
+                      _UpdateDisplay
+ ---------------------------------------------------------------------------------
+ (1) _UpdateDisplay                                        1     1      0   20992
+                                              8 COMMON     1     1      0
+                   _MAX7219_Transfer
+                       _WarningFlash
+ ---------------------------------------------------------------------------------
+ (2) _WarningFlash                                         6     6      0   10564
+                                              6 COMMON     2     2      0
+                                              0 BANK0      4     4      0
+                   _MAX7219_Transfer
+ ---------------------------------------------------------------------------------
+ (1) _Timer0_Init                                          0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _TestDisplay                                          6     6      0   10663
+                                              6 COMMON     2     2      0
+                                              0 BANK0      4     4      0
+                   _MAX7219_Transfer
+ ---------------------------------------------------------------------------------
+ (1) _MAX7219_Init                                         1     1      0   10428
+                                              6 COMMON     1     1      0
+                   _MAX7219_Transfer
+ ---------------------------------------------------------------------------------
+ (3) _MAX7219_Transfer                                     3     2      1   10428
+                                              3 COMMON     3     2      1
+                        _SPI_SHIFT_8
+ ---------------------------------------------------------------------------------
+ (4) _SPI_SHIFT_8                                          1     1      0      31
+                                              2 COMMON     1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _ADC_Init                                             0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 4
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (5) _my_isr                                               2     2      0       0
+                                              0 COMMON     2     2      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 5
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _ADC_Init
+   _MAX7219_Init
+     _MAX7219_Transfer
+       _SPI_SHIFT_8
+   _MAX7219_Transfer
+     _SPI_SHIFT_8
+   _TestDisplay
+     _MAX7219_Transfer
+       _SPI_SHIFT_8
+   _Timer0_Init
+   _UpdateDisplay
+     _MAX7219_Transfer
+       _SPI_SHIFT_8
+     _WarningFlash
+       _MAX7219_Transfer
+         _SPI_SHIFT_8
+
+ _my_isr (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             1F0      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+BITCOMMON            E      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+COMMON               E      A       B       2       78.6%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+BITSFR2              0      0       0       3        0.0%
+SFR2                 0      0       0       3        0.0%
+STACK                0      0       0       3        0.0%
+BITSFR3              0      0       0       4        0.0%
+SFR3                 0      0       0       4        0.0%
+ABS                  0      0      15       4        0.0%
+BITBANK0            50      0       0       5        0.0%
+BITSFR4              0      0       0       5        0.0%
+SFR4                 0      0       0       5        0.0%
+BANK0               50      4       A       6       12.5%
+BITSFR5              0      0       0       6        0.0%
+SFR5                 0      0       0       6        0.0%
+BITBANK1            50      0       0       7        0.0%
+BITSFR6              0      0       0       7        0.0%
+SFR6                 0      0       0       7        0.0%
+BANK1               50      0       0       8        0.0%
+BITSFR7              0      0       0       8        0.0%
+SFR7                 0      0       0       8        0.0%
+BITBANK2            50      0       0       9        0.0%
+BITSFR8              0      0       0       9        0.0%
+SFR8                 0      0       0       9        0.0%
+BANK2               50      0       0      10        0.0%
+BITSFR9              0      0       0      10        0.0%
+SFR9                 0      0       0      10        0.0%
+BITBANK3            50      0       0      11        0.0%
+BITSFR10             0      0       0      11        0.0%
+SFR10                0      0       0      11        0.0%
+BANK3               50      0       0      12        0.0%
+BITSFR11             0      0       0      12        0.0%
+SFR11                0      0       0      12        0.0%
+BITBANK4            50      0       0      13        0.0%
+BITSFR12             0      0       0      13        0.0%
+SFR12                0      0       0      13        0.0%
+BANK4               50      0       0      14        0.0%
+BITSFR13             0      0       0      14        0.0%
+SFR13                0      0       0      14        0.0%
+BITBANK5            50      0       0      15        0.0%
+BITSFR14             0      0       0      15        0.0%
+SFR14                0      0       0      15        0.0%
+BANK5               50      0       0      16        0.0%
+BITSFR15             0      0       0      16        0.0%
+SFR15                0      0       0      16        0.0%
+BITBANK6            10      0       0      17        0.0%
+BITSFR16             0      0       0      17        0.0%
+SFR16                0      0       0      17        0.0%
+BANK6               10      0       0      18        0.0%
+BITSFR17             0      0       0      18        0.0%
+SFR17                0      0       0      18        0.0%
+BITSFR18             0      0       0      19        0.0%
+SFR18                0      0       0      19        0.0%
+DATA                 0      0      15      19        0.0%
+BITSFR19             0      0       0      20        0.0%
+SFR19                0      0       0      20        0.0%
+BITSFR20             0      0       0      21        0.0%
+SFR20                0      0       0      21        0.0%
+BITSFR21             0      0       0      22        0.0%
+SFR21                0      0       0      22        0.0%
+BITSFR22             0      0       0      23        0.0%
+SFR22                0      0       0      23        0.0%
+BITSFR23             0      0       0      24        0.0%
+SFR23                0      0       0      24        0.0%
+BITSFR24             0      0       0      25        0.0%
+SFR24                0      0       0      25        0.0%
+BITSFR25             0      0       0      26        0.0%
+SFR25                0      0       0      26        0.0%
+BITSFR26             0      0       0      27        0.0%
+SFR26                0      0       0      27        0.0%
+BITSFR27             0      0       0      28        0.0%
+SFR27                0      0       0      28        0.0%
+BITSFR28             0      0       0      29        0.0%
+SFR28                0      0       0      29        0.0%
+BITSFR29             0      0       0      30        0.0%
+SFR29                0      0       0      30        0.0%
+BITSFR30             0      0       0      31        0.0%
+SFR30                0      0       0      31        0.0%
+BITSFR31             0      0       0      32        0.0%
+SFR31                0      0       0      32        0.0%
+
+
+Microchip Technology PIC Macro Assembler V1.45 build -152302408 
+Symbol Table                                                                                   Fri May 25 19:14:34 2018
+
+          ??_UpdateDisplay 0078                          pc 0002                __CFG_CP$OFF 0000  
+              __CFG_LVP$ON 0000                        l360 0519               __CFG_CPD$OFF 0000  
+                      wreg 0009                       S2943 04E6                       l2321 02DA  
+                     l2331 0307                       l2323 02E3                       l2315 02C4  
+                     l2333 0310                       l2325 02EC                       l2317 02CA  
+                     l2341 032B                       l2421 005A                       l2351 0352  
+                     l2335 0319                       l2327 02F5                       l2319 02D1  
+                     l2343 033B                       l2337 0322                       l2329 02FE  
+                     l2361 0383                       l2265 03C0                       l2275 0406  
+                     l2285 041A                       l2277 0409                       l2509 00BC  
+                     l2359 0373                       l2295 0460                       l2641 0152  
+                     l2553 00EE                       l2465 008A                       l2831 0237  
+                     l2817 021A                       l2729 01B6                       l2851 0255  
+                     l2843 0249                       l2835 023D                       l2827 0231  
+                     l2941 0331                       l2861 0263                       l2773 01E8  
+                     l2685 0184                       l2597 0120                       l2855 025B  
+                     l2847 024F                       l2839 0243                       l2859 0261  
+                     l2869 027F                       l2897 0491                       u4107 043A  
+                     u4117 0295                       _PIE0 0090                       u4127 02B0  
+                     u4137 0355                       u4147 0388                       u4067 0494  
+                     u4157 03A3                       u2805 0350                       u4077 03C5  
+                     u4167 04DE                       u2815 0371                       u4087 03E0  
+                     u2825 0381                       u4097 041F                       u2745 03BE  
+                     u2755 0404                       u2775 0418                       u2785 045E  
+                     u2795 02C2               __CFG_WRT$OFF 0000              __CFG_FCMEN$ON 0000  
+                     _main 0464                       fsr0l 0004                       btemp 007E  
+         __end_of_ADC_Init 0514              __CFG_BOREN$ON 0000              __CFG_BORV$LOW 0000  
+                     start 001D              __CFG_CSWEN$ON 0000              __CFG_MCLRE$ON 0000  
+                    ?_main 0070                      _ADC_H 007A              __CFG_WDTE$OFF 0000  
+           __CFG_DEBUG$OFF 0000                      i1l100 000E                      i1l103 0018  
+                    _TRISC 008E                      _count 0024       __end_of_MAX7219_Init 04D0  
+                    status 0003                      wtemp0 007E            __initialization 001F  
+             __end_of_main 049D                     ??_main 0079                     _ADCON0 009D  
+                   _ADCON1 009E                     _ADRESH 009C         __CFG_RSTOSC$HFINT1 0000  
+                   _T0CON0 0017                     _T0CON1 0018                     _RC4PPS 0EA4  
+                   _RC5PPS 0EA5                     _FVRCON 0117                     _OSCFRQ 091F  
+                   _TMR0IE 0485                     _TMR0IF 0085          ?_MAX7219_Transfer 0073  
+            ??_Timer0_Init 0072             __CFG_PWRTE$OFF 0000         ??_MAX7219_Transfer 0074  
+           __CFG_STVREN$ON 0000              ??_TestDisplay 0076                     _my_isr 0004  
+                ?_ADC_Init 0070          WarningFlash@i_325 0028      MAX7219_Transfer@value 0073  
+          SPI_SHIFT_8@data 0072               ?_SPI_SHIFT_8 0070    __end_of__initialization 0027  
+           __pcstackCOMMON 0070        __end_of_Timer0_Init 0507        __end_of_TestDisplay 03AE  
+               ??_ADC_Init 0072      __size_of_MAX7219_Init 0033                 __pbssBANK0 0020  
+               __pmaintext 0464            __CFG_PPS1WAY$ON 0000                 __pintentry 0004  
+    __end_of_UpdateDisplay 028B                    ?_my_isr 0070               _MAX7219_Init 049D  
+                  _OSCCON1 0919                    _PPSLOCK 0E0F                    _SSP1BUF 0211  
+              _Timer0_Init 04FA                _TestDisplay 028B                    __ptext1 002B  
+                  __ptext2 03AE                    __ptext3 04FA                    __ptext4 028B  
+                  __ptext5 049D                    __ptext6 04D0                    __ptext7 0514  
+                  __ptext8 0507            __size_of_my_isr 0019              ?_WarningFlash 0070  
+     end_of_initialization 0027       __size_of_SPI_SHIFT_8 0009                  _TMR0Hbits 0016  
+           ??_WarningFlash 0076                  _PORTCbits 000E  __size_of_MAX7219_Transfer 0016  
+                _TRISCbits 008E          __size_of_ADC_Init 000D           __CFG_FEXTOSC$OFF 0000  
+                _Cold_Flag 0020             __end_of_my_isr 001D        start_initialization 001F  
+         __CFG_LPBOREN$OFF 0000                   ??_my_isr 0070                __pbssCOMMON 007A  
+                ___latbits 0001              __pcstackBANK0 0026       __end_of_WarningFlash 0464  
+             ?_Timer0_Init 0070               ?_TestDisplay 0070                  __pswtext1 04E6  
+         _MAX7219_Transfer 04D0                   _ADC_Init 0507     __size_of_UpdateDisplay 0260  
+                 _SSP1CON1 0215                 _ADCON0bits 009D              ??_SPI_SHIFT_8 0072  
+             TestDisplay@i 0028                   _Hot_Flag 0022               TestDisplay@j 0026  
+            _UpdateDisplay 002B                 _ANSELCbits 018E              WarningFlash@i 0026  
+    __size_of_WarningFlash 00B6              __size_of_main 0039        __end_of_SPI_SHIFT_8 051D  
+     __size_of_Timer0_Init 000D                   int$flags 007E             ?_UpdateDisplay 0070  
+             _SSP1STATbits 0214              ?_MAX7219_Init 0070       __size_of_TestDisplay 0123  
+             _WarningFlash 03AE                 _INTCONbits 000B                   intlevel1 0000  
+        __CFG_CLKOUTEN$OFF 0000   __end_of_MAX7219_Transfer 04E6                _SSP1CONbits 0215  
+  MAX7219_Transfer@address 0075             ??_MAX7219_Init 0076                _SPI_SHIFT_8 0514  
